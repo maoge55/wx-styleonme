@@ -2,7 +2,8 @@
 <view class='product_list'>
   <view class='ul'>
     <block wx:for='{{listdata}}' wx:key='d'>
-      <view class="pic_list {{(grid=='3')?'grid3':''}}">
+      <view class="pic_list {{(grid=='3')?'grid3':''}}" catchtap='todetail'
+      data-pid='{{item.PID}}'>
         <view>
           <image src="{{item.pic[picnum]}}" class='pro-imgs' mode='widthFix'
           binderror='imgerr' data-index='{{index}}'></image>

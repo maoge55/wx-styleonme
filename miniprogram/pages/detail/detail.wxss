@@ -104,7 +104,7 @@
  width: 750rpx; 
 }
 
-.table{
+.option-select .table{
   width: 100%;
 }
 
@@ -151,7 +151,90 @@ vertical-align: middle;
 .detail-tab-ul{
     width: 100%;
     margin-top: 40rpx;
+    position: relative
 }
+.zxnum,.hjnum{
+  position: absolute;
+  z-index: 5;
+  font-size: 11px;
+  font-weight: 400;
+  top:23%;
+}
+.zxnum{right:  38%}
+.hjnum{right:  5%}
+/*详细信息*/
+.blk{height: 40rpx;}
+
+.lay_1 .table{
+    width: 95%;
+    margin: 0 auto;
+}
+.tbody{
+    vertical-align: middle;
+    border-color: inherit;
+    width: 100%;
+    border-top: 1px solid #ddd;
+}
+
+.tbody view{
+  display: flex;
+  border: 1px solid #ddd;
+  border-top:none;
+  align-items: center;
+}
+.tbody view text{
+    padding: 0 0 0 10px;
+    text-align: left;
+    color: #828282;
+    font-size: 11px;
+}
+
+.tbody view .td1{
+  flex: 0 0 auto;
+  width: 20%;
+  border-right: 1px solid #ddd;
+}
+
+.msimg-ul{
+    width: 750rpx;
+    margin-top: 20px;
+    text-align: center;
+}
+.msimg-ul-li{
+  width: 100%;
+}
+.msimg-ul-li image{width: 100%;}
+
+/*加载条*/
+.load-icon {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  z-index: 20000;
+}
+.load-icon image {
+  width: 20px;
+  margin: 0 auto;
+}
+
+/*商品咨询*/
+.btn-bt-list4{
+      margin: 20rpx auto 0;
+    text-align: center;
+}
+.btn-bt-list4 text{
+    border: 1px solid #000000;
+    color: #000000;
+    padding: 20rpx 0;
+      display: inline-block;
+    width: 35%;
+    font-size: 12px;
+        margin: 0 20rpx 0 20rpx;
+}
+
+
+
 
 
 

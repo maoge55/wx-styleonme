@@ -54,6 +54,14 @@ Component({
       var i=e.currentTarget.dataset.index;
       var key='listdata['+i+'].pic';
       this.setData({[key]:err})
+    },
+
+    todetail:function(e){
+      console.log(e.currentTarget.dataset.pid);
+      let pid = e.currentTarget.dataset.pid;
+      wx.navigateTo({
+        url: '../../pages/detail/detail?PID='+pid+'',
+      })
     }
   }
 })

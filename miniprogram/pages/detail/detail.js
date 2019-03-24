@@ -16,11 +16,24 @@ Page({
     colors:[],
     sizes:[
       {id:'0',text:'S'},
-      {id:'1',text:'M'}
+      {id:'1',text:'M'},
+      {id:'3',text:'L'}
     ],
     nums:[],
     msi:0,
-    msimg:[]
+    msimg:[],
+    sizeImgs:[
+      {
+        cid:'0101',
+        url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/dress_size.jpg'
+      }
+    ],
+    sizeImg:null,
+    flag:false,
+    xdata:[],
+    zxnum:0,
+    hjnum:0,
+    navtitles:['详细信息','商品咨询','商品后记']
   },
 
   getcolors(){
@@ -67,25 +80,57 @@ Page({
 
     console.log(this.data.progg)
   },
+  getsizeImg(cid){
+    let simg=this.data.sizeImgs;
+    for(let v of simg){
+      if(v.cid==cid){
+        this.setData({sizeImg:v.url});
+        break;
+      }
+    }
+  },
+  getmsimg(){
+    let xdata=this.data.xdata;
+    let i = this.data.msi;
+    let pic = xdata[i].imgs.split('|');
+    pic.pop();
+    this.setData({ 
+      msimg: this.data.msimg.concat(pic),
+      msi:i+1,
+      flag:false,
+    })
+  },
+  loadmore: function (e) {
+    let i=this.data.msi;
+    if(i>this.data.xdata.length-1){
+        wx.showToast({
+          title: '已加载全部数据',
+        })
+      return;
+    }
+    this.setData({ flag: true })
+    this.getmsimg();
+  },
   onLoad: function (options) {
     let db=wx.cloud.database();
-    db.collection('product').where({Id:'1'}).get().then(res=>{
+    var pid='48162'
+    if(options.PID!=undefined){
+      pid=options.PID
+    }
+    db.collection('product').where({PID:pid}).get().then(res=>{
       let data=res.data;
       util.listCl(data);
       this.setData({pro:data[0]})
       console.log(this.data.pro)
       this.getcolors();
+      this.getsizeImg(this.data.pro.cid);
     })
 
-    this.createNum()
-
-    db.collection('prodetail').where({ IDS: '48271' }).get().then(res => {
-      console.log(res.data)
-      let xdata=res.data;
-      let i=this.data.msi;
-      let pic=xdata[i].imgs.split('|');
-      pic.pop();
-      this.setData({msimg:pic})
+    this.createNum();
+    db.collection('prodetail').where({ IDS: pid }).get().then(res => {
+      let xdata = res.data;
+      this.setData({xdata:xdata})
+      this.getmsimg();
     })
   },
 
@@ -116,19 +161,6 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
 
   /**
    * 用户点击右上角分享

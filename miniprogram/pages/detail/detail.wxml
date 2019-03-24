@@ -1,12 +1,13 @@
-<mother>
+<mother bindtobottom='loadmore'>
   <view slot='placehoder2'>
+    <!-- 产品名 -->
     <view class="sub_tit head_line">
       <image src='../../images/btn_back.gif' mode='widthFix' catchtap='backlast'></image>
       <view class='h2'>
         <text class="title_center" style="padding:10px 0;">{{pro.title}}</text>
       </view>
     </view>
-
+    <!--  -->
     <view class='item-detail-buy-info'>
 
       <view class='box-center'>
@@ -25,12 +26,12 @@
             </block>
           </view>
         </view>
-        
+
         <view class='ul-view-box'>
           <view class='item-icon'>
-              <image src='../../images/icons/new_item_discount.gif'></image>
-              <image src='../../images/icons/1519788749_0.gif' ></image>
-              <image src='../../images/icons/1519790194_0.jpg' ></image>
+            <image src='../../images/icons/new_item_discount.gif'></image>
+            <image src='../../images/icons/1519788749_0.gif'></image>
+            <image src='../../images/icons/1519790194_0.jpg'></image>
           </view>
 
           <view class='price'>
@@ -83,15 +84,114 @@
 
 
     </view>
-
+    <!-- 中间的导航栏 -->
     <view class='detail-tab'>
       <view class='detail-tab-ul'>
-        <nav bindswitchtab='tabss' type='normal'></nav>
+        <nav bindswitchtab='tabss' type='normal' titles="{{navtitles}}"></nav>
+        <view class='zxnum'>({{zxnum}})</view>
+        <view class='hjnum'>({{hjnum}})</view>
       </view>
     </view>
+    <!--  -->
+    <!-- 详情图列表 -->
+    <block wx:if='{{navcurrent==0}}'>
+      <view class='img-model-list'>
+        <view>
+          <view style='width:100%; margin:0 auto'>
+            <image src='{{pro.pic[1]}}' mode='widthFix'></image>
+          </view>
+        </view>
+        <view class='blk'></view>
+        <view class='blk'></view>
+      </view>
+      <view style='margin-bottom:40rpx'>
+        <view class="lay_1" style="text-align: left;">
+          <view class='table'>
+            <view style="word-break: break-all;" class='tbody'>
+              <view>
+                <text class='td1'>材质</text>
+                <text>棉100%</text>
+              </view>
+              <view>
+                <text class='td1'>制造日</text>
+                <text>2019-03</text>
+              </view>
+              <view>
+                <text class='td1'>制造国</text>
+                <text>韩国</text>
+              </view>
+              <view>
+                <text class='td1'>制造厂</text>
+                <text>（株）STYLEONME合作商</text>
+              </view>
+              <view>
+                <text class='td1'>厚度</text>
+                <text>薄</text>
+              </view>
+              <view>
+                <text class='td1'>透视</text>
+                <text>略有</text>
+              </view>
+              <view>
+                <text class='td1'>弹性</text>
+                <text>无</text>
+              </view>
+              <view>
+                <text class='td1'>内衬</text>
+                <text>无</text>
+              </view>
+              <view>
+                <text class='td1'>洗涤方式</text>
+                <text>干洗</text>
+              </view>
+              <view>
+                <text class='td1'>洗涤小技巧</text>
+                <text></text>
+              </view>
+              <view>
+                <text style="font-size:9px;">* 洗涤时注意事项\n清洗前请仔细阅读页面下端的清洗注意事项。</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view style='width:750rpx'>
+          <image mode='widthFix' src="{{sizeImg}}"></image>
+        </view>
+        <view class='lay_2'></view>
+      </view>
+      <view class='msimg-ul'>
+        <block wx:for='{{msimg}}' wx:key=''>
+          <view class='msimg-ul-li'>
+            <image src='{{item}}' mode='widthFix' lazy-load></image>
+          </view>
+          <view style='height:140rpx'></view>
+        </block>
+      </view>
 
-    <block wx:for='{{msimg}}' wx:key=''>
-      <image src='{{item}}' style='width:100%' mode='widthFix'></image>
+      <view class='load-icon' hidden='{{!flag}}'>
+        <image src='../../images/icons/ajax-loader.gif' mode='widthFix'></image>
+      </view>
     </block>
+    <!--  -->
+    <!-- 咨询 -->
+    <block wx:elif='{{navcurrent==1}}'>
+      <view class='goods-questions'>
+        <view class='btn-bt-list4' style='margin-bottom:40rpx'>
+          <text catchtap='writeques'>写商品咨询</text>
+        </view>
+      </view>
+      <view class='write-box'></view>
+    </block>
+    <!--  -->
+    <!-- 后记 -->
+    <block wx:else>
+      <view class='goods-result'>
+        <view class='btn-bt-list4' style='margin-bottom:40rpx'>
+          <text catchtap='writeques'>写评价</text>
+        </view>
+      </view>
+      <view class='write-box'></view>
+    </block>
+    <!-- 后记 -->
   </view>
 </mother>

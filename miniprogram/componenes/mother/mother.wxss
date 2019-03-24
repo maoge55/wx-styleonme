@@ -1,0 +1,65 @@
+.lnb-layer{
+    display: block;
+    position: fixed;
+    left: 0px;
+    top: 0;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1002;
+    background: rgba(0, 0, 0, 0.7);
+}
+.close{width: 100rpx;
+    position: absolute;
+    left: 82%;
+    z-index: 1500;
+    height: 100rpx;}
+
+.mothercoxtt{
+    min-height: 1522rpx;
+    height: auto;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-top: -2rpx;
+    margin-left: -2rpx;
+    background-color: #fff;
+    transition: 300ms;
+    backface-visibility: hidden;
+}
+
+.move-x{transform: translate(87%, 0);
+min-height: 0;overflow-y: hidden!important;
+}
+
+.cards{
+}
+.toptar{
+  position: fixed;
+  width: 750rpx;
+  z-index: 999;
+}
+
+.qucik-menu{
+  bottom: 10rpx;
+  position: fixed;
+  right: 5px;
+  z-index: 201;
+}
+
+.qucik-menu-item{
+    z-index: 500;
+    background: rgba(0, 0, 0, .5);
+    border: 1px solid rgba(0, 0, 0, .1);
+    margin: 0px 0px 0px 0px;
+    width: 100rpx;
+    height: 60rpx;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60rpx;
+    float: left;
+    margin-left: 6rpx;
+    border-radius: 4rpx;
+    color: #fff;
+    font-size: 14px;
+}
+

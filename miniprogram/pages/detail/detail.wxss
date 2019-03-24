@@ -1,0 +1,159 @@
+/*产品，名字*/
+
+.head_line {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sub_tit {
+  padding: 8rpx 0 8rpx 0;
+  display: inline-block;
+  width: 98%;
+  position: relative;
+}
+
+.sub_tit image {
+  z-index: 999;
+  position: absolute;
+  padding: 14rpx 0 0 20rpx;
+  width: 50rpx;
+  left: 0;
+  top: 20rpx;
+}
+
+.sub_tit .h2 {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.sub_tit .title_center {
+  display: block;
+  background: none;
+  text-align: center;
+  color: #111;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/*产品轮播区域*/
+
+.box-center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.box-center swiper {
+  height: 1040rpx;
+  width: 750rpx;
+}
+
+.box-center swiper image {
+  width: 100%;
+  height: 95%;
+}
+
+.img-list {
+  width: 100%;
+  margin-bottom: 36rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.img-list image {
+  width: 20%;
+  flex: 0 1 auto;
+}
+
+.ul-view-box {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.item-icon {
+  margin-bottom: 10rpx;
+  color: #8d8d8d;
+  font-size: 12px;
+}
+
+.item-icon image {
+  width: 18%;
+  height: 34rpx;
+  margin-right: 1px;
+}
+.price{
+      color: #a1a1a1;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.price-num-color{
+      color: #111111;
+    font-weight: bold;
+    font-size: 21px;
+}
+.point{
+      color: #111111;
+    font-size: 13px;
+}
+
+/*规格选择区域*/
+
+.option-select{
+ margin-top: 40rpx;
+ width: 750rpx; 
+}
+
+.table{
+  width: 100%;
+}
+
+.tr{width: 100%;display: flex;align-items: center;}
+.tr-tit{width: 20%;text-align: center;
+font-weight: normal;
+vertical-align: middle;
+    font-size: 13px;
+    line-height: 40rpx;
+    }
+
+.tr-select{
+  width: 80%;
+  text-align: left;
+    line-height: 20px;
+}
+
+/*按钮*/
+.btn-list{
+    margin: 40rpx auto 60rpx auto;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-list button{
+  border: 1px solid #000000;
+  border-radius: 0;
+  width: 30%;
+  padding: 0;
+  margin:0;
+  margin-right: 15rpx;
+  display: block; 
+  flex: 0 0 auto;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.detail-tab{
+  margin-bottom: 60rpx;
+  width: 750rpx
+}
+
+.detail-tab-ul{
+    width: 100%;
+    margin-top: 40rpx;
+}
+
+
+
+
+

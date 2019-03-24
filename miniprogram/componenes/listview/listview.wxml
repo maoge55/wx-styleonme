@@ -1,0 +1,8 @@
+
+  <view class='grid-2' catchtap='girdChoose' data-grid='2'>
+    <image src="{{(grid=='2')?grid2.on:grid2.off}}"></image>
+  </view>
+  <view class='grid-3' catchtap='girdChoose' data-grid='3'>
+    <image src="{{(grid=='3')?grid3.on:grid3.off}}"></image>
+  </view>
+

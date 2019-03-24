@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+        "cards": "../../componenes/cards/cards",
+        "toptar": "../../componenes/toptar/toptar",
+        "aside": "../../componenes/aside/aside",
+        "clothClass": "../../componenes/clothClass/clothClass",
+        "foot":"../../componenes/foot/foot"
+  }
+}

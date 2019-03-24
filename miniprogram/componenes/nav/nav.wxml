@@ -1,0 +1,19 @@
+<block wx:if="{{type=='normal'}}">
+  <view class='navlist'> 
+    <block wx:for='{{titles}}' wx:key=''>
+      <view class="item1 {{(index==current)?'active1':''}} {{(current>0)&&(index==current-1)?'last1':''}} {{(index==titles.length-1)?'lasted1':''}}"catchtap='ontab' data-index='{{index}}' style="font-size:{{size}}px;color:{{color}}">
+      {{item}}
+      </view>
+    </block>
+  </view>
+</block>
+
+<block wx:if="{{type=='maoge'}}">
+  <view class='navlist'> 
+    <block wx:for='{{titles}}' wx:key=''>
+      <view class="item2 {{(index==current)?'active2':''}} {{(current>0)&&(index==current-1)?'last2':''}} {{(index==titles.length-1)?'lasted2':''}}"catchtap='ontab' data-index='{{index}}' style="font-size:{{size}}px;color:{{color}}">
+      {{item}}
+      </view>
+    </block>
+  </view>
+</block>

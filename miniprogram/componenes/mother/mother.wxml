@@ -1,0 +1,23 @@
+<aside hidden='{{!flag}}' asideMove='{{am}}'></aside>
+<scroll-view scroll-y style='height:{{h}}px' catchscroll='onscroll' 
+scroll-top='{{scrollTop}}' catchscrolltolower='touchbottom' lower-threshold='500rpx'>
+  <view class="mothercoxtt {{!flag?'':'move-x'}}">
+    <cards class='cards'></cards>
+    <view class='toptar' style='top:{{top}}px'>
+      <toptar catchmyevent='showAside'></toptar>
+    </view>
+    <view style='height:100rpx'></view>
+    <slot name='placehoder1' style='z-index:0;position:relative'></slot>
+    <clothClass></clothClass>
+    <slot name='placehoder2'></slot>
+    <foot></foot>
+  </view>
+</scroll-view>
+
+<view class='qucik-menu'>
+  <view class='qucik-menu-item' catchtap='toCart'>Cart</view>
+  <view class='qucik-menu-item' catchtap='toTop'>▲Top</view>
+</view>
+<view class='lnb-layer' hidden='{{!flag}}' catchtap='hideAside'>
+  <image src='../../images/btn_close.png' class='close'></image>
+</view>

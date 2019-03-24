@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "mother": "../../componenes/mother/mother",
+    "listview": "../../componenes/listview/listview",
+    "list": "../../componenes/list/list",
+    "select":"../../componenes/select/select"
+  }
+}

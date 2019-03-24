@@ -1,0 +1,97 @@
+<mother>
+  <view slot='placehoder2'>
+    <view class="sub_tit head_line">
+      <image src='../../images/btn_back.gif' mode='widthFix' catchtap='backlast'></image>
+      <view class='h2'>
+        <text class="title_center" style="padding:10px 0;">{{pro.title}}</text>
+      </view>
+    </view>
+
+    <view class='item-detail-buy-info'>
+
+      <view class='box-center'>
+        <swiper indicator-dots indicator-color='#ddd' indicator-active-color='#bbb' current='{{index}}' duration='400'>
+          <block wx:for='{{pro.pic}}' wx:key=''>
+            <swiper-item>
+              <image src='{{item}}'></image>
+            </swiper-item>
+          </block>
+        </swiper>
+
+        <view class='img-list'>
+          <view style='width:100%'>
+            <block wx:for='{{pro.pic}}' wx:key=''>
+              <image src='{{item}}' mode='widthFix' catchtap='chooseImg' data-index='{{index}}'></image>
+            </block>
+          </view>
+        </view>
+        
+        <view class='ul-view-box'>
+          <view class='item-icon'>
+              <image src='../../images/icons/new_item_discount.gif'></image>
+              <image src='../../images/icons/1519788749_0.gif' ></image>
+              <image src='../../images/icons/1519790194_0.jpg' ></image>
+          </view>
+
+          <view class='price'>
+            <text class='price-num-color'>{{pro.price}}</text>
+          </view>
+          <view class='point'>{{price.point}}</view>
+        </view>
+
+      </view>
+
+      <view class='option-select'>
+        <view class='table'>
+          <view class='tr'>
+            <view class='tr-tit'>颜色</view>
+            <view class='tr-select'>
+              <select width='540rpx' nowText='请选择' propArray='{{colors}}' catchchoose='select' data-ss='0'>
+              </select>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='option-select'>
+        <view class='table'>
+          <view class='tr'>
+            <view class='tr-tit'>大小</view>
+            <view class='tr-select'>
+              <select width='540rpx' nowText="{{(progg.color==null)?'请先选择颜色':'请选择'}}" propArray='{{(progg.color==null)?[]:sizes}}' catchchoose='select' data-ss='1'>
+              </select>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='option-select'>
+        <view class='table'>
+          <view class='tr'>
+            <view class='tr-tit'>数量</view>
+            <view class='tr-select'>
+              <select width='540rpx' propArray='{{nums}}' catchchoose='select' data-ss='2'>
+              </select>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='btn-list'>
+        <button size='mini' bindtap='tobuy'>立即购买</button>
+        <button size='mini' style='background:#000;color:#fff' bindtap='addcart'>加入购物车</button>
+        <button size='mini' bindtap='tolike'>收藏夹</button>
+      </view>
+
+
+    </view>
+
+    <view class='detail-tab'>
+      <view class='detail-tab-ul'>
+        <nav bindswitchtab='tabss' type='normal'></nav>
+      </view>
+    </view>
+
+    <block wx:for='{{msimg}}' wx:key=''>
+      <image src='{{item}}' style='width:100%' mode='widthFix'></image>
+    </block>
+  </view>
+</mother>

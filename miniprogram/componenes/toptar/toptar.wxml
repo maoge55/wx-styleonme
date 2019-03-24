@@ -1,0 +1,25 @@
+<view class='herder'>
+  <view class='tit-onme'>
+    <image src='{{imgs[0]}}' class='tit-onme-img' catchtap='tohome'></image>
+  </view>
+  <view class='main' catchtap='showleft'>
+    <image src='{{imgs[1]}}' class='main-img'></image>
+  </view>
+  <view class='search' catchtap='showinput'>
+    <image src='{{imgs[2]}}' class='search-img'></image>
+  </view>
+  <view class='login' >
+    <image src='{{imgs[3]}}' class='login-img'></image>
+  </view>
+  <view class='cart'>
+    <image src='{{imgs[4]}}' class='cart-img'></image>
+    <view class='cart-num'>{{cartNum}}</view>
+  </view>
+</view>
+
+<view class='searchin' hidden='{{flag2}}'>
+  <input class='input' confirm-type='search' focus='{{!flag2}}' placeholder='输入关键词' bindblur='searchblur' bindconfirm='tolists'></input>
+</view>
+
+
+

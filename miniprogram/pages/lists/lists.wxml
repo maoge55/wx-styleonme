@@ -1,0 +1,41 @@
+<mother bindtobottom='loadmore'>
+  <view slot='placehoder2'>
+    <view class='onmeContent' style='margin-bottom:60rpx'>
+
+      <view class='sub-tit'>
+        <image src='../../images/btn_back.gif' mode='widthFix' catchtap='backlast'></image>
+        <text>{{title}}</text>
+      </view>
+
+      <view class='best-list-area'>
+        <view class='sub_tit_img'>
+          <view class="title">
+            <text class="title_main">BEST of BEST</text>
+            <text class="title_sub">最有人气的BEST商品</text>
+          </view>
+        </view>
+        <view class='best-ptolist'>
+          <list listdata='{{bestpro}}' grid='3'>
+          </list>
+        </view>
+      </view>
+
+      <view class='middle-area'>
+        <view class='cmna-left'>
+          <select bindchoose='getordmeth'></select>
+        </view>
+        <view class='cmna-right'>
+          <listview grid='{{grid}}' bindgirdChoose='getgrid'></listview>
+        </view>
+      </view>
+
+      <view class='maincontent'>
+        <list listdata='{{classpro}}' grid='{{grid}}'></list>
+      </view>
+
+    </view>
+    <view class='load-icon' hidden='{{!flag}}'>
+      <image src='../../images/icons/ajax-loader.gif' mode='widthFix'></image>
+    </view>
+  </view>
+</mother>

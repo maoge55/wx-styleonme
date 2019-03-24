@@ -1,0 +1,7 @@
+
+.grid-2,.grid-3{
+    display: inline;
+    margin-right: -2rpx;
+}
+
+.grid-2 image,.grid-3 image{width: 60rpx;height: 60rpx;}

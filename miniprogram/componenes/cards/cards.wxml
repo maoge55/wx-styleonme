@@ -1,0 +1,10 @@
+  <view class="flip-container">
+      <view class="flipper" style='transform:rotateX({{angle}}deg)'>
+          <view class="front">
+            <image src='{{imgUrls[0]}}'></image>
+          </view>
+          <view class="back">
+          <image src='{{imgUrls[1]}}'></image>
+          </view>
+      </view>
+  </view>

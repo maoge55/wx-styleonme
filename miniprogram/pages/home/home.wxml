@@ -1,0 +1,97 @@
+<mother>
+  <view slot='placehoder1'>
+    <swiper autoplay circular style='height:500rpx'>
+      <block wx:for='{{swiperimg}}' wx:key='a'>
+        <swiper-item>
+          <image src='{{item.url}}' style='width:100%;height:100%;'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view slot='placehoder2'>
+    <view class='small-swiper'>
+      <view class='small-swiper-left'>
+        <swiper style='width:100%;height:374.46rpx' autoplay='{{autoplay1}}' circular bindchange='smallchange' data-id='1'>
+          <block wx:for='{{swiperimg2}}' wx:key='b'>
+            <swiper-item>
+              <image src='{{item.url}}' style='width:100%;height:100%;'></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class='small-swiper-right'>
+        <swiper style='width:100%;height:374.46rpx' autoplay='{{autoplay2}}' circular bindchange='smallchange' data-id='2'>
+          <block wx:for='{{swiperimg3}}' wx:key='c'>
+            <swiper-item>
+              <image src='{{item.url}}' style='width:100%;height:100%;'></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+    
+    <view class='onmeContent'>
+      <view class='bestofbest'>
+        <view class='gridicon'>
+          <listview grid='{{grid}}' bindgirdChoose='getgrid'></listview>
+        </view>
+
+        <view style='margin-top:60rpx;text-align:center'>
+          <text style='font-size:16px;font-weight:bold'>BEST OF BEST</text>
+        </view>
+
+        <view style='margin-top:40rpx;'>
+          <list listdata='{{bestpro}}' grid='{{grid}}' style='margin-top:40rpx;'></list>
+        </view>
+
+        <view class='mor-btn' catchtap='addmorbest' hidden='{{!flag1}}'>
+          <view style='font-weight:bold' hidden='{{!flag2}}'>更多 (
+            <text>{{lenth+1}}</text>
+             / 15)
+          </view>
+          <image src='../../images/icons/ajax-loader.gif' mode='widthFix' style='width:32rpx;margin:0 auto' hidden='{{flag2}}'></image>
+        </view>
+      </view>
+
+      <view class='newarrival'>
+        <view style='margin-top:120rpx'>
+          <view style='text-align:center;font-size:16px'>
+            <text style='font-weight:bold'>NEW 5%</text>
+          </view>
+        </view>
+
+        <view class='arrival-content'>
+          <list listdata='{{arrivalpro}}' grid='{{grid}}'></list>
+        </view>
+
+        <view class='mor-btn'>
+          <text>更多95折新品 </text>
+        </view>
+      </view>
+
+      <view class='tp'>
+        <view style='margin-top:60rpx'>
+          <view style='text-align:center;font-size:16px'>
+            <text style='font-weight:bold'>搭配商品</text>
+            <text style='color:#000'>BEST</text>
+          </view>
+        </view>
+
+        <view class='arrival-content'>
+          <list listdata='{{tppro}}' grid='3'></list>
+        </view>
+      </view>
+
+      <view class='baaner-area'>
+        <view class='baaner-list'>
+          <block wx:for='{{baanerImg}}' wx:key=''>
+            <view catchtap='' data-index='{{index}}' data-bid='{{item.id}}'>
+              <image src='{{item.url}}' mode='widthFix'></image>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</mother>

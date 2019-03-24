@@ -1,0 +1,8 @@
+<view class='menu'>
+  <block wx:for='{{nav}}' wx:key='{{index}}'>
+    <view class="item {{(index<2)?'accent':''}} {{(index>7)?'bor':''}}" catchtap='toList'
+    data-item='{{item}}'>
+      {{item.title}}
+    </view>
+  </block>
+</view>

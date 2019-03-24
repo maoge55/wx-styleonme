@@ -1,0 +1,34 @@
+/*顶部可翻转卡槽*/
+.flip-container {
+    position: relative;
+    -webkit-perspective: 500;
+    -moz-perspective: 500;
+    -ms-perspective: 500;
+    perspective: 500;
+    -ms-transform: perspective(750rpx);
+    -moz-transform: perspective(750rpx); /*重要*/
+    transform-style: preserve-3d; /*重要*/
+}
+.flipper {
+    position: relative;
+    width: 750rpx;
+    height: 70rpx;
+    transition: 2s;
+    transform-style: preserve-3d; /*重要*/
+}
+.flipper image{width: 100%; height: 100%}
+.front ,.back{
+    position: absolute;
+    left: 0;
+    top: 0;
+    backface-visibility: hidden;  /*重要*/
+    width: 100%;
+    height: 100%;
+}
+.front {
+    transform: rotateX(0deg);
+    z-index: 2;
+}
+.back {
+    transform: rotateX(-180deg);
+}

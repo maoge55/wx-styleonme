@@ -1,0 +1,34 @@
+<view class='footer'>
+  <view class='foot-nav'>
+    <block wx:for='{{nav}}' wx:key='{{index}}'>
+      <view class="item {{(index==3)?'born':''}}" data-item='{{item}}'>{{item.title}}           </view>
+    </block>
+  </view>
+  <view class='foot-fuben'>
+    <view class='kfzx'>
+      <block wx:for='{{footimg.kfzx}}' wx:key='{{index}}'>
+        <image src='{{item}}' mode='aspectFit' class='kfzx-img'></image>
+      </block>
+    </view>
+    <view class='syzn'>
+      <image src='{{footimg.syzn[0]}}'  class='syznimg1'></image>
+      <image src='{{footimg.syzn[1]}}' class='syznimg2'></image>
+    </view>
+  </view>
+  <view class='foot-icons'>
+    <block wx:for='{{footimg.icons}}' wx:key='{{index}}'>
+      <image src='{{item.url}}' class='foot-icons-img' data-fid='{{item.fid}}' catchtap='onficon'></image>
+    </block>
+  </view>
+  <view class='copr-info'>
+    <text>商号 :  (株)Styleonme / 代表理事：金成燁\n</text>
+    <text>个人隐私保护管理负责人：李曙洛\n</text>
+    <text>营业执照号码  :  201-86-08540\n</text>
+    <text>通信营销编号：2008首尔中区1368号\n</text>
+    <text>E-mail : styleonme1@styleonme.com\n</text>
+    <text>地址 : 韩国 首尔特别市 中区退溪路307（光熙洞1街 光熙大厦）5楼 styleonme </text>
+    <text>Copyright(c) 2015. </text>
+    <text style='color:#f15f5f'>StyleOnme </text>
+    <text>All rights reserved.</text>
+  </view>
+</view>

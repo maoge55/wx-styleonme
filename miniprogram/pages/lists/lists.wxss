@@ -1,0 +1,104 @@
+/*大标题*/
+
+.sub-tit {
+  width: 750rpx;
+  padding: 8rpx 0 8rpx 0;
+  display: inline-block;
+  text-align: center;
+}
+
+.sub-tit image {
+  z-index: 999;
+  position: absolute;
+  padding: 14rpx 0 0 20rpx;
+  width: 50rpx;
+  left: 0;
+}
+
+.sub-tit text {
+  text-align: center;
+  float: none;
+  background: none;
+  padding-left: 6rpx;
+  margin: 0;
+  color: #363636;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/*best of best*/
+
+.sub-tit-img {
+  width: 750rpx;
+  height: 70rpx;
+  padding-top: 24rpx;
+}
+
+.sub_tit_img .title {
+  text-align: center;
+  line-height: 100%;
+  padding-top: 4rpx;
+}
+
+.sub_tit_img .title_main {
+  font-family: 'Nanum Gothic';
+  font-size: 14px;
+  font-weight: bold;
+  color: #363636;
+}
+
+.sub_tit_img .title_sub {
+  display: block;
+  color: #363636;
+  font-size: 12px;
+}
+
+/*中间的选择条*/
+
+.middle-area {
+  padding-top: 5px;
+  box-sizing: border-box;
+  font-size: 0;
+  margin-top: 15px;
+  border-top: 1px solid rgb(220, 220, 220);
+}
+
+.cmna-left, .cmna-right {
+  width: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.cmna-left {
+  padding-left: 30rpx;
+  z-index: 555;
+  position: relative;
+}
+
+.cmna-right {
+  padding-right: 30rpx;
+  text-align: right;
+}
+
+/*分类列表*/
+
+.maincontent {
+  clear: both;
+  padding-top: 10rpx;
+  width: 750rpx;
+  display: inline-block;
+}
+
+.load-icon {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  z-index: 20000;
+}
+
+.load-icon image {
+  width: 20px;
+  margin: 0 auto;
+}

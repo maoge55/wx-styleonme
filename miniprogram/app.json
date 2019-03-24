@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/detail/detail",
+    "pages/home/home",
+    "pages/lists/lists",
+    "pages/cart/cart",
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6f6f6",
+    "navigationBarTitleText": "Styleonme",
+    "navigationBarTextStyle": "black"
+  }
+}

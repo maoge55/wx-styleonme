@@ -1,0 +1,61 @@
+
+.small-swiper{
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 0px;
+    text-align: center;
+    margin-top: 0;
+    width: 750rpx;
+}
+
+.small-swiper-left,.small-swiper-right{
+    display: inline-block;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 49.8%;
+    font-size: 0px;
+    text-align: left;
+}
+.small-swiper-left{margin-right:0.2%}
+.small-swiper-right{margin-left: 0.2%}
+
+.onmeContent{margin-top: 100rpx;clear: both;}
+
+.gridicon{
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+
+.mor-btn{
+  display: block;
+  padding: 16rpx 20rpx;
+  font-weight: 400;
+  margin: 30rpx auto 0;
+  text-align: center;
+  cursor: pointer;
+  width: 190rpx;
+  height: 30rpx;
+  font-size: 10px;
+  border: 1px solid #b7b7b7;
+  background-color: #ffffff;
+  color: #545454;
+}
+
+.arrival-content{margin-top: 20px;}
+
+.baaner-area{
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 0px;
+    text-align: center;
+    margin-top: 60rpx;
+}
+
+.baaner-list image{
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #cacaca;
+}
+
+

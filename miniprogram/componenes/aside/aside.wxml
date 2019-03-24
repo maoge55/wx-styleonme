@@ -1,0 +1,53 @@
+<view class='lnb' hidden='{{flag}}'>
+  <view class='lnb-top-title'>Styleonme</view>
+  <view class='lnb-link-site'>
+    <text space='nbsp' decode>&nbsp;&nbsp;KR&nbsp;&nbsp;/</text>
+    <text space='nbsp' decode>&nbsp;&nbsp;EN&nbsp;&nbsp;/</text>
+    <text space='nbsp' decode>&nbsp;&nbsp;JP&nbsp;&nbsp;/</text>
+  </view>
+  <view class='lnb-top-sns'>
+    <image src='../../images/icons/foot_facebook_icon.png'></image>
+    <image src='../../images/icons/foot_weibo_icon.png'></image>
+  </view>
+  <view class='lnb-logout-mssage'>现在是未登入账号状态。</view>
+  <view class='lnb-message'>注册会员并登入账号，更多的优惠等着你哦！</view>
+  <view class='left-menu-button'>
+    <button size='mini' class='btn-log'>登录</button>
+    <button size='mini' class='btn-reg'>注册</button>
+  </view>
+  <view class='lnb-tab-area'>
+    <view class='lnb-tab'>
+      <block wx:for='{{tab}}' wx:key='{{index}}'>
+        <view class="lnv-tab-tit {{(curindex==index)?'tab-active':''}}" data-index='{{index}}' catchtap='getindex'>
+          {{item.title}}
+        </view>
+      </block>
+    </view>
+
+    <view class='lnb-tab-content'>
+      <block wx:if='{{curindex==0}}'>
+        <block wx:for='{{cloclass}}' wx:key='{{index}}'>
+          <view class="clo-item {{(index<3)?'font-red':''}}" data-item='{{item}}' catchtap='tolists'>{{item.title}}</view>
+        </block>
+        <view class='lnb-menu-block-title'>ONME世界</view>
+        <block wx:for='{{onme}}' wx:key='{{index}}'>
+          <view class="onme-item {{(index==1)?'font-red':''}}" data-item='{{item}}'>
+            {{item.title}}
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <block wx:for='{{mine}}' wx:key='{{index}}'>
+
+          <view class='mine-item' data-item='{{item}}'>
+            <view hidden='{{index>1}}' style='position:absolute; left:0;top:10rpx;'>
+              <image src='{{item.icons}}' class='mine-item-icon'></image>
+              <text hidden='{{index!=0}}' class='cart-num'>{{cartnum}}</text>
+            </view>
+            <text>{{item.title}}</text>
+          </view>
+        </block>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,9 +1,6 @@
 let util=require('../../utils/util.js')
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     pro:{},
     index:0,
@@ -26,6 +23,37 @@ Page({
       {
         cid:'0101',
         url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/dress_size.jpg'
+      },
+      {
+        cid:'0105',
+        url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/top_size.jpg'
+      },
+      {
+        cid:'0104',
+        url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/top_size.jpg'
+      },
+      {
+        cid:'0103',
+        url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/top_size.jpg'
+      },
+      {
+        cid:'0102',url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/jacket_coat_size.jpg'
+      },
+      {
+        cid:'0106',
+        url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/skirt_size.jpg'
+      },
+      {
+        cid:'0107',
+        url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/pants_size.jpg'
+      },
+      {
+        cid:'0108',
+        url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/bag_size.jpg'
+      },
+      {
+        cid:'0110',
+        url:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/sizeImg/coodi_acc_size.jpg'
       }
     ],
     sizeImg:null,
@@ -33,9 +61,12 @@ Page({
     xdata:[],
     zxnum:0,
     hjnum:0,
-    navtitles:['详细信息','商品咨询','商品后记']
+    glnum:1,
+    kgnum:1,
+    navtitles:['详细信息','商品咨询','商品后记'],
+    buycart: { text:'▲',flag:false}
   },
-
+  //从产品获取颜色
   getcolors(){
     let color=this.data.pro.colors;
     let colors=[];
@@ -43,10 +74,23 @@ Page({
       let ys={};
       ys.id=i.toString();
       ys.text=color[i];
+      for(var j=0;j<color[i].length;j++){
+        if(color[i][j]=='&'){
+            var k=j;
+            var str1=color[i].substring(0,k);
+            var str3='色';
+            var str2=color[i].substr(k+2,5);
+            str2 = util.hexToText(str2);
+            ys.text=str1+str2+str3;
+            break;
+          }
+      }
       colors.push(ys);
     }
     this.setData({colors:colors})
   },
+
+  //购买数量数组
   createNum(){
     let nums = [];
     for(let i=0;i<20;i++){
@@ -57,11 +101,14 @@ Page({
     }
     this.setData({nums:nums})
   },
+
+  //小图片控制轮播(swipter)
   chooseImg:function(e){
     let index=e.currentTarget.dataset.index;
     this.setData({index:index})
   },
 
+  //获取下拉列表规格选择值
   select:function(e){
     console.log(e);
     let ss=e.currentTarget.dataset.ss;
@@ -80,6 +127,8 @@ Page({
 
     console.log(this.data.progg)
   },
+
+  //获取产品测量图
   getsizeImg(cid){
     let simg=this.data.sizeImgs;
     for(let v of simg){
@@ -89,6 +138,8 @@ Page({
       }
     }
   },
+
+  //获取产品详情图列表
   getmsimg(){
     let xdata=this.data.xdata;
     let i = this.data.msi;
@@ -100,6 +151,8 @@ Page({
       flag:false,
     })
   },
+
+  //下拉下载更多详情图
   loadmore: function (e) {
     let i=this.data.msi;
     if(i>this.data.xdata.length-1){
@@ -110,6 +163,27 @@ Page({
     }
     this.setData({ flag: true })
     this.getmsimg();
+  },
+
+  //打开/关闭底部购买弹窗
+  opencart:function(){
+    let buycart=this.data.buycart;
+    if(buycart.flag){
+      buycart.text = '▲'
+      buycart.flag=false
+    }
+    else{
+      buycart.text ='▼'
+      buycart.flag=true
+    }
+    this.setData({buycart:buycart})
+  },
+
+  //关闭底部购买弹窗
+  hidecart:function(){
+    this.setData({
+      buycart: { flag: false, text:'▲'}
+    })
   },
   onLoad: function (options) {
     let db=wx.cloud.database();

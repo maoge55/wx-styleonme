@@ -105,6 +105,10 @@ Page({
       util.listCl(arrdata);
       this.setData({tppro:arrdata})
     })
+
+    wx.cloud.callFunction({
+      name:'updatepro'
+    }).then(res=>{console.log(res)})
   },
 
   /**

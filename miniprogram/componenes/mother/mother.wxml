@@ -12,9 +12,11 @@ scroll-top='{{scrollTop}}' catchscrolltolower='touchbottom' lower-threshold='500
     <slot name='placehoder2'></slot>
     <foot></foot>
   </view>
+
+  <view class='j-class'></view>
 </scroll-view>
 
-<view class='qucik-menu'>
+<view class='qucik-menu i-class' >
   <view class='qucik-menu-item' catchtap='toCart'>Cart</view>
   <view class='qucik-menu-item' catchtap='toTop'>▲Top</view>
 </view>

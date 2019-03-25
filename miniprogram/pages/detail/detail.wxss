@@ -233,6 +233,73 @@ vertical-align: middle;
         margin: 0 20rpx 0 20rpx;
 }
 
+/* 底部菜单 */
+.bottom-menu{
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    display: block;
+    z-index: 2000;
+    height: 72rpx;
+}
+.bottom-menu-table{
+    border-top: 1px solid #000000;
+    width: 100%;
+    height: 72rpx;
+    display: flex;
+    align-items: center;
+}
+
+.bottom-menu-item1,.bottom-menu-item2,.bottom-menu-item3{
+  background: rgb(256,256,256);
+    text-align: center;
+    color: #333333;
+    border-right: 1px solid white;
+    font-size: 10px;
+    height: 100%;
+    line-height: 72rpx;
+}
+
+.bottom-menu-item1{width: 25%;flex: 0 0 auto; }
+.bottom-menu-item3{width: 25%;flex: 0 0 auto;border-right: 0;line-height: 36rpx;}
+.bottom-menu-item2{flex: 1 1 auto;    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 12px;}
+
+.qucik-menu{bottom: 84rpx!important;}
+
+.bottblk{height: 74rpx;}
+
+.cartform-ex{
+    margin-top: -30rpx;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    bottom: 72rpx;
+    padding-bottom: 72rpx;
+    background: #fff;
+}
+.ligitblue-box{
+  border-top: 10rpx solid #ffc5d4;
+      border-bottom: 1px solid #e0e0e0;
+    padding: 20rpx 2%;
+        background: #f8f9fb;
+}
+
+.xjt{
+    position: relative;
+    height: 60rpx;
+    margin-top: -20rpx;
+    text-align: center;
+}
+.xjt image{height: 100%; width: 120rpx;}
+
+.btbtn{    background-color: white;
+    margin: 0;
+    padding: 5px 0 5px 0;}
+
+
 
 
 

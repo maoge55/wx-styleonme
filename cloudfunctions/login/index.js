@@ -23,6 +23,7 @@ exports.main = (event, context) => {
   const wxContext = cloud.getWXContext()
 
   return {
+    name:'少时诵诗书所',
     event,
     openid: wxContext.OPENID,
     appid: wxContext.APPID,

@@ -8,10 +8,12 @@ let db=cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  const _=db.command
-  return await db.collection('product').update({
+  const _=db.command;
+  return await db.collection('product').limit(20).update({
     data:{
-      commentNum:0
+      tags:{
+        newfive:0,
+      }
     }
   })
 }

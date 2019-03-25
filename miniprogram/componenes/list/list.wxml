@@ -32,9 +32,9 @@
               <text style='line-height:28rpx'>{{item.price}}</text>
             </view>
             <view class='item-icon'>
-              <image src='../../images/icons/new_item_discount.gif'></image>
-              <image src='../../images/icons/1519788749_0.gif'></image>
-              <image src='../../images/icons/1519790194_0.jpg'></image>
+              <image src='../../images/icons/new_item_discount.gif' wx:if='{{item.tags.newfive}}'></image>
+              <image src='../../images/icons/1519788749_0.gif' wx:if='{{item.tags.sendTheDay}}'></image>
+              <image src='../../images/icons/1519790194_0.jpg' wx:if='{{item.tags.madeSelf}}'></image>
             </view>
             <view class='wish-btn'>
               <image src='../../images/icons/wishlist_button.png'></image>

@@ -9,11 +9,19 @@
     <image src='../../images/icons/foot_facebook_icon.png'></image>
     <image src='../../images/icons/foot_weibo_icon.png'></image>
   </view>
-  <view class='lnb-logout-mssage'>{{islogin}}</view>
-  <view class='lnb-message'>注册会员并登入账号，更多的优惠等着你哦！</view>
-  <view class='left-menu-button'>
-    <button class='btn-log' bindtap='login'>点击一键登录</button>
-  </view>
+  <block wx:if='{{!isbind}}'>
+    <view class='lnb-logout-mssage'>现在是未登入账号状态。</view>
+    <view class='left-menu-button'>
+      <button class='btn-log' open-type='getUserInfo' bindgetuserinfo='infoBind'>点击绑定微信号</button>
+    </view>
+  </block>
+  <block wx:else>
+    <view style='text-align: center'>
+      <image src='{{userInfo.userImg}}' class='userimg'></image>
+    </view>
+    <view class='username'>{{userInfo.userName}}</view>
+    <view class='lnb-message'>点击完善信息，更多的优惠等着你哦！</view>
+  </block>
   <view class='lnb-tab-area'>
     <view class='lnb-tab'>
       <block wx:for='{{tab}}' wx:key='{{index}}'>

@@ -21,7 +21,8 @@ Component({
   data: {
     flag:false,
     am:0,
-    islogin:'现在是未登入账号状态。',
+    isbind:false,
+    userInfo:null,
     tab:[
       {id:0,title:'类别'},
       {id:0,title:'我的页面'}
@@ -61,7 +62,20 @@ Component({
     ],
     cartnum:0
   },
-
+  ready(){
+    wx.cloud.callFunction({
+      name:'getuserinfo'
+    }).then(res=>{
+      console.log(res.result.data[0])
+      if(res.result.data.length>0){
+        let userInfo=res.result.data[0];
+        this.setData({
+          isbind:true,
+          userInfo:userInfo
+        })
+      }
+      })
+  },
   /**
    * 组件的方法列表
    */
@@ -71,7 +85,6 @@ Component({
         curindex:e.currentTarget.dataset.index
       })
     },
-
     tolists:function(e){
       var info = e.currentTarget.dataset.item;
       var data = JSON.stringify(info);
@@ -83,6 +96,26 @@ Component({
       wx.reLaunch({
         url: '../../pages/lists/lists?data=' + data + '',
       })
+    },
+
+    infoBind:function(e){
+      let userInfo=JSON.parse(e.detail.rawData);
+      console.log(userInfo)
+      userInfo ={
+        userName: userInfo.nickName,
+          userImg: userInfo.avatarUrl,
+            userLocation: userInfo.country + '-' + userInfo.province + '-' + userInfo.city
+      }
+      this.setData({userInfo:userInfo,isbind:true})
+      //添加用户,并将信息写入数据库
+      if(!this.data.userInfo){console.log('获取失败');retrun;}
+      wx.cloud.callFunction({
+        name:'adduser',
+        data:{
+          userName:userInfo.nickName,
+          userImg: userInfo.avatarUrl,
+          userLocation: userInfo.country + '-' + userInfo.province + '-' + userInfo.city}
+      }).then(res=>console.log(res))
     }
   }
 })

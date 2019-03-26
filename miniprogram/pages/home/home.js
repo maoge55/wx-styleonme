@@ -90,9 +90,6 @@ Page({
     this.getlistdata()
   },
   onLoad: function (options) {
-    wx.getUserInfo({
-      success:(e)=>{console.log(e)}
-    })
     this.getswiperimg();
     this.getlistdata();
     wx.cloud.callFunction({

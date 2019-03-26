@@ -21,6 +21,7 @@ Component({
   data: {
     flag:false,
     am:0,
+    islogin:'现在是未登入账号状态。',
     tab:[
       {id:0,title:'类别'},
       {id:0,title:'我的页面'}

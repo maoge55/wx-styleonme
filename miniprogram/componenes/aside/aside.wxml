@@ -9,11 +9,10 @@
     <image src='../../images/icons/foot_facebook_icon.png'></image>
     <image src='../../images/icons/foot_weibo_icon.png'></image>
   </view>
-  <view class='lnb-logout-mssage'>现在是未登入账号状态。</view>
+  <view class='lnb-logout-mssage'>{{islogin}}</view>
   <view class='lnb-message'>注册会员并登入账号，更多的优惠等着你哦！</view>
   <view class='left-menu-button'>
-    <button size='mini' class='btn-log'>登录</button>
-    <button size='mini' class='btn-reg'>注册</button>
+    <button class='btn-log' bindtap='login'>点击一键登录</button>
   </view>
   <view class='lnb-tab-area'>
     <view class='lnb-tab'>

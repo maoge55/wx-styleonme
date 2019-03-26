@@ -9,6 +9,14 @@ function listCl(data) {
     data[i].colors = colors
   }
 }
+function getprice(str){
+  for(var i=0;i<str.length;i++){
+    if(str[i]=='元'){
+      break;
+    }
+    return str.substring(0,i)
+  }
+}
 
 function hexToText(data) {    
   var dataTemp,str = '';    
@@ -20,7 +28,84 @@ function hexToText(data) {    
   return str;  
 }
 
+var compareasc = function (prop) {
+  return function (obj1, obj2) {
+    var val1 = obj1[prop];
+    var val2 = obj2[prop];
+    if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
+      val1 = Number(val1);
+      val2 = Number(val2);
+    }
+    if (val1 < val2) {
+      return -1;
+    } else if (val1 > val2) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+}
+var comparedesc = function (prop) {
+  return function (obj1, obj2) {
+    var val1 = obj1[prop];
+    var val2 = obj2[prop];
+    if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
+      val1 = Number(val1);
+      val2 = Number(val2);
+    }
+    if (val1 < val2) {
+      return 1;
+    } else if (val1 > val2) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+}
+var comparepirceasc=function(price){
+  return function (obj1, obj2) {
+    var val1 = obj1[price];
+    var val2 = obj2[price];
+    if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
+      val1=getprice(val1);
+      val2=getprice(val2);
+      val1 = Number(val1);
+      val2 = Number(val2);
+    }
+    if (val1 < val2) {
+      return -1;
+    } else if (val1 > val2) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+}
+var comparepircedesc=function(price){
+  return function (obj1, obj2) {
+    var val1 = obj1[price];
+    var val2 = obj2[price];
+    if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
+      val1=getprice(val1);
+      val2=getprice(val2);
+      val1 = Number(val1);
+      val2 = Number(val2);
+    }
+    if (val1 < val2) {
+      return 1;
+    } else if (val1 > val2) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+}
+
 module.exports = {
   listCl: listCl,
-  hexToText: hexToText
+  hexToText: hexToText,
+  compareasc:compareasc,
+  comparedesc:comparedesc,
+  comparepriceasc:comparepirceasc,
+  comparepricedesc:comparepircedesc
 }

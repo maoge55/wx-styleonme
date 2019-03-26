@@ -37,7 +37,7 @@
               <image src='../../images/icons/1519790194_0.jpg' wx:if='{{item.tags.madeSelf}}'></image>
             </view>
             <view class='wish-btn'>
-              <image src='../../images/icons/wishlist_button.png'></image>
+              <image src='{{loveImg[item.islove]}}' catchtap='addofflike' data-index='{{index}}' data-pid='{{item.PID}}'></image>
             </view>
           </view>
         </view>

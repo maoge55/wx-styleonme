@@ -9,8 +9,9 @@ App({
         traceUser: true,
       })
     }
-  
+    wx.authorize({
+      scope: 'userInfo',
+    })
     this.globalData = {}
-  
   }
 })

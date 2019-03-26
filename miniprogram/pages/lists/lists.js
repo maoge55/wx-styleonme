@@ -11,11 +11,31 @@ Page({
     classname:null,
     title:null,
     grid:'2',
-    ordid:'0',
+    ordid:0,
     len:0,
-    flag:false
+    flag:false,
+    loadover:false
   },
-
+  pxfs(){
+    var arr=this.data.classpro;
+    var ordid=this.data.ordid;
+    switch(ordid){
+      case 0:
+      arr.sort(util.comparedesc('time'))
+      break;
+      case 1:
+      arr.sort(util.comparedesc('charm'))
+      break;
+      case 2:
+      arr.sort(util.comparepriceasc('price'))
+      break;
+      case 3:
+      arr.sort(util.comparepricedesc('price'))
+      break;
+    }
+    this.setData({classpro:arr})
+    console.log(this.data.classpro)
+  },
   getlistdata(cid){
     //获取best商品列表
     wx.cloud.callFunction({
@@ -26,7 +46,7 @@ Page({
         cid:cid
       }
     }).then(res=>{
-      let bestpro=res.result.mydata.data;
+      let bestpro=res.result.mydata;
       util.listCl(bestpro);
       this.setData({bestpro:bestpro})
     })
@@ -34,7 +54,7 @@ Page({
 
   getclasspro(cid){
     //获取分类商品的列表
-    var { len, cid } = this.data;
+    var { len, cid} = this.data;
     wx.cloud.callFunction({
       name: 'getprolist',
       data: {
@@ -43,13 +63,13 @@ Page({
         limit: 20
       }
     }).then(res => {
-      var newdata = res.result.mydata.data;
+      var newdata = res.result.mydata;
       if(newdata.length==0){
         wx.showToast({
           title: '已加载全部数据',
           icon: 'success'
         })
-        this.setData({flag:false})
+        this.setData({flag:false,loadover:true})
         return;
       }
       util.listCl(newdata)
@@ -58,6 +78,8 @@ Page({
         len:len+1,
         flag:false
       })
+      this.pxfs()
+      var arr=this.data.classpro;
     })
   },
 
@@ -67,6 +89,7 @@ Page({
     if(id==ordid){return;}
     this.setData({ordid:id})
     console.log(id)
+    this.pxfs();
   },
 
   getgrid:function(e){
@@ -74,6 +97,9 @@ Page({
   },
 
   loadmore:function(e){
+    if(this.data.len==0){return;}//避免刚载入页面就触底刷新
+    if(this.data.flag){return;}//避免重复触底刷新
+    if(this.data.loadover){return;}//加载全部数据完也不触发
     console.log(e)
     this.setData({flag:true})
     this.getclasspro();

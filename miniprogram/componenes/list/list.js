@@ -29,7 +29,8 @@ Component({
     picnum: 0,
     ldata:[],
     errimg:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/errimg.jpg',
-    err:false
+    err:false,
+    loveImg: ['../../images/icons/wishlist_button.png', '../../images/icons/add_wishlist.png']
   },
 
   attached(){
@@ -61,6 +62,22 @@ Component({
       let pid = e.currentTarget.dataset.pid;
       wx.navigateTo({
         url: '../../pages/detail/detail?PID='+pid+'',
+      })
+    },
+
+    addofflike:function(e){
+      var{index,pid}=e.currentTarget.dataset;
+      wx.cloud.callFunction({
+        name:'addofflike',
+        data:{pid:pid}
+      }).then(res=>{
+        let islove=res.result.data.islove;
+        let listdata=this.data.listdata;
+        listdata[index].islove=islove
+
+        this.setData({
+          listdata:listdata
+        })
       })
     }
   }

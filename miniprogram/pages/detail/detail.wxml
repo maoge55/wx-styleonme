@@ -29,9 +29,9 @@
 
         <view class='ul-view-box'>
           <view class='item-icon'>
-            <image src='../../images/icons/new_item_discount.gif'></image>
-            <image src='../../images/icons/1519788749_0.gif'></image>
-            <image src='../../images/icons/1519790194_0.jpg'></image>
+            <image src='../../images/icons/new_item_discount.gif' wx:if='{{pro.tags.newfive}}'></image>
+            <image src='../../images/icons/1519788749_0.gif' wx:if='{{pro.tags.sendTheDay}}'></image>
+            <image src='../../images/icons/1519790194_0.jpg' wx:if='{{pro.tags.madeSelf}}'></image>
           </view>
 
           <view class='price'>

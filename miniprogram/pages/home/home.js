@@ -89,8 +89,10 @@ Page({
     })
     this.getlistdata()
   },
-
   onLoad: function (options) {
+    wx.getUserInfo({
+      success:(e)=>{console.log(e)}
+    })
     this.getswiperimg();
     this.getlistdata();
     wx.cloud.callFunction({
@@ -101,14 +103,14 @@ Page({
         len:0
       }
     }).then(res=>{
-      let arrdata=res.result.mydata.data;
+      let arrdata=res.result.mydata;
       util.listCl(arrdata);
       this.setData({tppro:arrdata})
     })
 
-    wx.cloud.callFunction({
-      name:'updatepro'
-    }).then(res=>{console.log(res)})
+    // wx.cloud.callFunction({
+    //   name:'login'
+    // }).then(res=>{console.log(res)})
   },
 
   /**

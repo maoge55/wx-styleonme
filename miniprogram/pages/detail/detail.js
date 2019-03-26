@@ -185,6 +185,12 @@ Page({
       buycart: { flag: false, text:'▲'}
     })
   },
+
+  backlast:function(){
+    wx.navigateBack({
+      delta:1
+    })
+  },
   onLoad: function (options) {
     let db=wx.cloud.database();
     var pid='48162'

@@ -1,0 +1,12 @@
+page{background: #fff}
+
+.head{ width: 750rpx;text-align: center;color: #999;font-size: 25px;font-weight: 600;
+margin-bottom: 100rpx;}
+.content{display: flex;flex-direction: column;}
+.content input{font-size: 14px;width: 320rpx;}
+.line{margin: 10rpx auto;width: 95%;background: #999;height: 3rpx;}
+.line2{margin: 10rpx 0 10rpx 18.75rpx;width: 65%;background: #999;height: 3rpx;}
+.phonenum,.code{display: flex;width: 90%; margin: 0 auto;}
+.code button{background: #ed7c7a;color: #fff; font-size: 11px;}
+.sumbit{position: absolute;bottom:300rpx;width: 700rpx; background: #e64340;
+color: #fff;left: 25rpx;}

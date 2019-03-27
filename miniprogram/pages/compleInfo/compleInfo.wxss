@@ -1,0 +1,17 @@
+pages{width: 750rpx;}
+.userinfo{display: flex;width: 750rpx;padding: 30rpx  0 0 30rpx;}
+.userinfo-avatar{height: 100rpx;width: 100rpx; border-radius: 10rpx; }
+.userinfo-nickname{margin-left: 50rpx;margin-top: 20rpx;font-size: 16px;}
+.line{width: 750rpx; background: #dedede;height: 3rpx; margin-top:30rpx;}
+.name,.wxnumber,.tele,.born,.location{
+  border: 3rpx #dedede solid; margin:30rpx 30rpx 0 30rpx; display: flex;
+  border-radius: 10rpx;height:90rpx;font-size: 16px;align-items: center;position: relative;color: #666;padding:0 20rpx;}
+.wxnumber input{width: 100%;}
+.name text,.wxnumber text,.tele text{color: #ff0101}
+.born,.location{height: 110rpx;}
+.name-gd,.wxnumber-gd,.tele-gd{position: absolute;}
+.name-gd2,.wxnumber-gd2,.born-gd,.location-gd,.tele-gd2{position: absolute; top:-24rpx;left:50rpx; padding: 0 10rpx; z-index: 1; background: #fff;}
+.tele-bind{position: absolute;right: 10rpx;top:24rpx;font-size: 16px; color: #ff0101;}
+.submit{background: #ff4040; width: 90%; color: #fff;font-size: 16px;height: 70rpx;
+line-height: 70rpx;}
+input,picker{color:#000}

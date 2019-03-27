@@ -19,8 +19,11 @@
     <view style='text-align: center'>
       <image src='{{userInfo.userImg}}' class='userimg'></image>
     </view>
-    <view class='username'>{{userInfo.userName}}</view>
-    <view class='lnb-message'>点击完善信息，更多的优惠等着你哦！</view>
+    <view class='username'>
+    
+      <text>{{userInfo.userName}}</text>
+    </view>
+    <view class='lnb-message' catchtap='tocomplnfo'>修改个人信息</view>
   </block>
   <view class='lnb-tab-area'>
     <view class='lnb-tab'>

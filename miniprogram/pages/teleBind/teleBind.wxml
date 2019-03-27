@@ -1,0 +1,17 @@
+<view class='head'>手机号绑定</view>
+
+<view class='content'>
+  <view class='phonenum'>
+    <text>手机号：</text>
+    <input placeholder='请输入11位的手机号' type='number' maxlength='11' bindblur='phoneBlur'></input>
+  </view>
+  <view class='line'></view>
+  <view class='code'>
+    <text>验证码：</text>
+    <input placeholder='请输入验证码' maxlength='6' bindblur='codeBlur'></input>
+    <button size='mini' disabled='{{gainFlag}}' bindtap='createCode'>{{btnText}}</button>
+  </view>
+  <view class='line2'></view>
+</view>
+
+<button form-type='sumbit' class='sumbit' bindtap='sumbit'>提交</button>

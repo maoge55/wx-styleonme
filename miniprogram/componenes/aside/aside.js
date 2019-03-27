@@ -1,4 +1,5 @@
 // componenes/aside/aside.js
+const app=getApp()
 Component({
   /**
    * 组件的属性列表
@@ -19,6 +20,8 @@ Component({
    * 组件的初始数据
    */
   data: {
+    completed:false,
+    
     flag:false,
     am:0,
     isbind:false,
@@ -63,18 +66,13 @@ Component({
     cartnum:0
   },
   ready(){
-    wx.cloud.callFunction({
-      name:'getuserinfo'
-    }).then(res=>{
-      console.log(res.result.data[0])
-      if(res.result.data.length>0){
-        let userInfo=res.result.data[0];
-        this.setData({
-          isbind:true,
-          userInfo:userInfo
-        })
-      }
+    var z = this
+    app.userInfoReadyCallback = function () {
+      z.setData({
+        userInfo: app.globalData.userInfo,
       })
+    }
+    this.setData({ userInfo: app.globalData.userInfo,isbind:true})
   },
   /**
    * 组件的方法列表
@@ -111,10 +109,7 @@ Component({
       if(!this.data.userInfo){console.log('获取失败');retrun;}
       wx.cloud.callFunction({
         name:'adduser',
-        data:{
-          userName:userInfo.nickName,
-          userImg: userInfo.avatarUrl,
-          userLocation: userInfo.country + '-' + userInfo.province + '-' + userInfo.city}
+        data:userInfo
       }).then(res=>console.log(res))
     }
   }

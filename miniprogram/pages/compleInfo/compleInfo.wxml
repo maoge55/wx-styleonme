@@ -1,0 +1,43 @@
+<view class='userinfo'>
+  <image class='userinfo-avatar' background-size="cover" src="{{userInfo.userImg}}"></image>
+  <view class='userinfo-nickname' >{{userName}}</view>
+</view>
+<view class='line'></view>
+<form bindsubmit='saveinfo'>
+  <view class='compleinfo'>
+    <view class='name'>
+      <view class='name-gd2' hidden="{{(!name)&&(!flag)}}" ><text>*</text>姓名</view>
+      <view class='name-gd' hidden="{{(!!name)||(flag)}}"><text>*</text>姓名</view>
+      <input bindfocus='nameFocus' bindblur='nameBlur' maxlength='11' data-id='0' name='name' value='{{name}}'>
+      </input>
+    </view>
+    <view class='wxnumber'>
+      <view class='wxnumber-gd2' hidden="{{(!wxnumber)&&(!flag2)}}"><text>*</text>微信号</view>
+      <view class='wxnumber-gd' hidden='{{(!!wxnumber)||(flag2)}}'><text>*</text>微信号</view>
+      <input bindfocus='wxnumberFocus' bindblur='wxnumberBlur' data-id='1' name='wxnumber' value='{{wxnumber}}'></input>
+    </view>
+    <view class='tele' bindtap='toTeleBind'>
+      <input disabled name='telephone' value='{{telephone}}'></input>
+      <view class='tele-gd2' hidden='{{!telephone}}'><text>*</text>手机</view>
+      <view class='tele-gd' hidden='{{!!telephone}}'><text>*</text>手机</view>
+      <view class='tele-bind'>{{isBind}}</view>
+    </view>
+    <view class='name' bindtap='tochooseaddress'>
+      <view class='name-gd2' hidden='{{!Received}}'><text>*</text>地址</view>
+      <view class='name-gd' hidden='{{!!Received}}'><text>*</text>地址</view>
+      <input name='Received' style='width:100%' disabled  value='{{Received}}'></input>
+    </view>
+    <view class='born'>
+      <view class='born-gd' >出生日期</view>
+      <picker mode='date' bindchange='dateChose' name='bothday'>{{bothday}}</picker>
+    </view>
+    <view class='location'>
+      <view class='location-gd'>所在城市</view>
+      <view>{{userLocation}}</view>
+    </view>
+  </view>
+
+  <view class='line'></view>
+
+  <button class='submit' form-type='submit' >确认修改</button>
+</form>

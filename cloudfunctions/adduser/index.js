@@ -14,10 +14,11 @@ exports.main = async (event, context) => {
     let pro2= await db.collection('userInfo').where({
       openid: wxContext.OPENID
     }).update({data:{userName:userName,userImg:userImg,userLocation:userLocation}})
-    return pro2
+    return '更新了'+pro2.stats.updated+'个用户信息'
   }
   else{
-    let pro3=await db.collection('userInfo').add({
+    //新增成员
+    let pro3= await db.collection('userInfo').add({
       data:{
         openid:wxContext.OPENID,
         userName:userName,
@@ -25,6 +26,20 @@ exports.main = async (event, context) => {
         userLocation:userLocation
       }
     })
-    return pro3;
+    //登录送积分和优惠劵
+    let date=new Date();
+    let mydate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
+    let pro4 = await db.collection('integral').add({
+      data:{
+        openid:wxContext.OPENID,
+        content:'登录送积分和优惠劵',
+        use:'',
+        total:'2.00',
+        leave:'2.00',
+        getTime:mydate
+      }
+    })
+
+    return 1111
   }
 }

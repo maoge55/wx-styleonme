@@ -1,10 +1,12 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/compleInfo/compleInfo",
     "pages/detail/detail",
     "pages/lists/lists",
     "pages/cart/cart",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/teleBind/teleBind"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

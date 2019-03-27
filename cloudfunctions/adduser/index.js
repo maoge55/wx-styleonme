@@ -39,7 +39,17 @@ exports.main = async (event, context) => {
         getTime:mydate
       }
     })
-
+    let date2=new Date();
+    date2.setDate(date2.getDate()+30)
+    mydate2 = date2.getFullYear() + '-' + (date2.getMonth() + 1) +'-'+date2.getDate()
+    let pro5 =await db.collection('coupon').add({
+      data:{
+        openid:wxContext.OPENID,
+        couponid:'DYL46CJOSWH70TRE',
+        dicount:3.00,
+        effective:mydate+'~'+mydate2
+      }
+    })
     return 1111
   }
 }

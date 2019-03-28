@@ -1,5 +1,5 @@
 <view class='userinfo'>
-  <image class='userinfo-avatar' background-size="cover" src="{{userInfo.userImg}}"></image>
+  <image class='userinfo-avatar' background-size="cover" src="{{userImg}}"></image>
   <view class='userinfo-nickname' >{{userName}}</view>
 </view>
 <view class='line'></view>
@@ -20,7 +20,8 @@
       <input disabled name='telephone' value='{{telephone}}'></input>
       <view class='tele-gd2' hidden='{{!telephone}}'><text>*</text>手机</view>
       <view class='tele-gd' hidden='{{!!telephone}}'><text>*</text>手机</view>
-      <view class='tele-bind'>{{isBind}}</view>
+      <view class='tele-bind' wx:if='{{!telephone}}'>{{isBind}}</view>
+      <view class='tele-bind' wx:else='{{!!telephone}}'>(已绑定)</view>
     </view>
     <view class='name' bindtap='tochooseaddress'>
       <view class='name-gd2' hidden='{{!Received}}'><text>*</text>地址</view>

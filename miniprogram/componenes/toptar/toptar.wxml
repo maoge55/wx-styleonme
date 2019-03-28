@@ -8,7 +8,7 @@
   <view class='search' catchtap='showinput'>
     <image src='{{imgs[2]}}' class='search-img'></image>
   </view>
-  <view class='login' >
+  <view class='login' catchtap='tomy'>
     <image src='{{imgs[3]}}' class='login-img'></image>
   </view>
   <view class='cart'>

@@ -1,0 +1,19 @@
+<mother>
+  <view slot='placehoder2'>
+    <view style='width:750rpx;'>
+      <view class='sub-tit head-line'>
+        <text class='title'>我的页面</text>
+      </view>
+
+      <view class='blk'></view>
+
+      <view class='mypage-icon-box'>
+        <block wx:for='{{mypage}}' wx:key=''>
+          <view class='item' data-index='{{index}}' data-id='{{item.id}}' data-url='{{item.url}}' bindtap='onclick'>
+            <image src='{{item.img}}' mode='widthFix'></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</mother>

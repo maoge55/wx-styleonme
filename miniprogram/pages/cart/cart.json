@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "mother": "../../componenes/mother/mother",
+    "stepper":"../../componenes/stepper/stepper"
+  }
 }

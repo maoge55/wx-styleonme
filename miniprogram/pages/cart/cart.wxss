@@ -1,1 +1,78 @@
-/* pages/cart/cart.wxss */
+.goods{
+  width: 750rpx;
+}
+.good-allchoose{
+  width: 750rpx;
+  display: flex;
+  align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+}
+.good-check{
+  width: 11%;
+  text-align: center;
+  padding: 8rpx 0;
+}
+.good-allchoose text{
+  width: 89%;
+    color: #5f6774;
+  font-weight: normal;
+  font-size: 12px;
+}
+.good-info{
+  width: 750rpx;
+  display: flex;
+  height: 100%
+  }
+
+.good-info .good-check{
+  flex-shrink: 0 0 auto;
+  padding: 0;
+}
+.good-info image{
+  width: 100%;
+}
+.good-detail{
+  width: 59%;
+      color: #5f6774;
+    font-weight: normal;
+    padding: 8px 0;
+    vertical-align: top;
+    border: 0;
+    padding-bottom: 0;
+    font-size: 12px;
+}
+.blk{
+  height: 10rpx;
+}
+.good-number{
+  padding: 0;
+    font-size: 12px;
+        color: #5f6774;
+    font-weight: normal;
+}
+.cart-num-box{
+      border-collapse: separate;
+    background: #f5f5f5;
+    margin: 10rpx 10rpx;
+    padding: 0 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.good-price{
+  position: relative;
+    padding-left: 10rpx;
+    vertical-align: top;
+        color: #333;
+    text-align: right;
+}
+
+.good-delete{
+  width: 44rpx;
+    height: 44rpx;
+    font-size: 0;
+}
+.good-delete image{
+  width: 100%;
+}

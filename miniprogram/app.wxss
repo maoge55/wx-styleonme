@@ -6,3 +6,25 @@
   align-items: center;
   box-sizing: border-box;
 } 
+
+/* 标题 */
+.head-line {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sub-tit {
+  padding: 8rpx 0 8rpx 0;
+  display: inline-block;
+  width: 98%;
+}
+
+.title {
+  text-align: center;
+  display: block;
+  background: none;
+  padding-left: 6rpx;
+  margin: 0;
+  color: #363636;
+  font-size: 14px;
+  font-weight: bold;
+}

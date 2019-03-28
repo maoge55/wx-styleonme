@@ -21,16 +21,18 @@ Page({
     flag4:false,
     Received:''
   },
-  saveloc(){
-    var {userName,userImg,name,wxnumber,telephone,userLocation,Received,bothday}=this.data;
+  saveloc(value){
+    var { userName, userImg, userLocation,bothday}=this.data;
+    var {name,wxnumber,telephone,Received}=value
     let data = { userName, userImg, name, wxnumber, telephone, userLocation, Received, bothday }
     wx.setStorageSync('userInfo', data)
     console.log('缓存',wx.getStorageSync('userInfo'))
   },
   saveinfo:function(e){
     let value=e.detail.value;
+    console.log('我的',value)
     //先将信息保存到本地缓存
-    this.saveloc()
+    this.saveloc(value)
     //再保存到数据库
     wx.cloud.callFunction({
       name:'compleInfo',
@@ -39,10 +41,12 @@ Page({
       wx.showToast({
         title: '保存成功',
         icon:'loading',
-        success:(e)=>wx.redirectTo({
-          url: '../home/home',
-        })
+        duration:3000
       })
+
+      setTimeout(() => wx.redirectTo({
+        url: '../home/home',
+      }),3000)
     })
   },
   onLoad: function (options) {
@@ -58,10 +62,10 @@ Page({
         userLocation: app.globalData.userInfo.userLocation
       })
     }
-    var userInfo = wx.getStorageSync('userInfo') ||{}
-    if (userInfo.userName) {
-      console.log('用户缓存加载')
-      var {userName, userImg, name, wxnumber, telephone, userLocation, Received, bothday } = userInfo;
+    var userInfo1 = wx.getStorageSync('userInfo') ||{}
+    if (userInfo1.userName) {
+      console.log('用户缓存加载',userInfo1)
+      var {userName, userImg, name, wxnumber, telephone, userLocation, Received, bothday } = userInfo1;
       this.setData({ userName, userImg, name, wxnumber, telephone, userLocation, Received, bothday })
     }
     else{
@@ -73,6 +77,7 @@ Page({
           console.log(userInfo)
           var { userName, userImg, name, wxnumber, telephone, userLocation, Received, bothday } = userInfo;
           this.setData({userName, userImg, name, wxnumber, telephone, userLocation, Received, bothday })
+          if(!this.data.telephone&&(!!userInfo1.telephone)){this.setData({telephone:userInfo1.telephone})}
         }
       })
     }
@@ -117,6 +122,22 @@ Page({
         let userInfo=wx.getStorageSync('userInfo')||{}
         userInfo.Received=Received;
         wx.setStorageSync('userInfo', userInfo)
+      }
+    })
+  },
+
+  tochooseaddress:function(e){
+    wx.chooseAddress({
+      success:e=>{
+        wx.showLoading({
+          title: '正在保存地址',
+        })
+        let address=e.provinceName+e.cityName+e.countyName+e.detailInfo
+        console.log(address)
+        this.setData({Received:address})
+      },
+      complete:(e)=>{
+        wx.hideLoading()
       }
     })
   }

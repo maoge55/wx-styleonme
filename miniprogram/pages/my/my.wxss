@@ -1,0 +1,18 @@
+
+.blk{height: 30rpx;}
+.mypage-icon-box{
+  display: flex;
+    width: 90%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.mypage-icon-box .item{
+  width: 25%;
+  margin: 0 0 20rpx 0;
+  text-align: center;
+}
+
+.mypage-icon-box image{
+  width: 70%;
+}

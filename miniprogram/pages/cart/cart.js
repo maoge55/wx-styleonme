@@ -1,18 +1,25 @@
 // pages/cart/cart.js
+let util=require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    goods:[]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
+  submit:function(e){
+
+  },
+  onLoad: function (options) {
+    let db=wx.cloud.database();
+    db.collection('product').limit(3).get().then(res=>{
+      console.log(res.data);
+      util.listCl(res.data)
+      this.setData({goods:res.data})
+    })
   },
 
   /**

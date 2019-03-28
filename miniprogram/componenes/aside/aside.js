@@ -21,7 +21,8 @@ Component({
    */
   data: {
     completed:false,
-    
+    integral:'',
+    couponNum:0,
     flag:false,
     am:0,
     isbind:false,
@@ -73,6 +74,15 @@ Component({
       })
     }
     this.setData({ userInfo: app.globalData.userInfo,isbind:true})
+    //调用获取当前积分总数和优惠劵总数的云函数
+    wx.cloud.callFunction({
+      name:'getwelfare',
+    }).then(res=>{
+      let integral=res.result.integral;
+      let couponNum=res.result.couponNum;
+      console.log(integral,couponNum)
+      this.setData({integral:integral.toFixed(2),couponNum:couponNum})
+    })
   },
   /**
    * 组件的方法列表
@@ -111,6 +121,12 @@ Component({
         name:'adduser',
         data:userInfo
       }).then(res=>console.log(res))
+    },
+
+    tocompleInfo:function(e){
+      wx.navigateTo({
+        url: '../../pages/compleInfo/compleInfo',
+      })
     }
   }
 })

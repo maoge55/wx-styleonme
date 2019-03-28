@@ -66,6 +66,18 @@ Component({
           wx.hideLoading()
         }
       })
+    },
+
+    tomy:function(){
+      wx.showLoading({
+      })
+
+      wx.reLaunch({
+        url: '../my/my',
+        success:function(){
+          wx.hideLoading()
+        }
+      })
     }
   }
 })

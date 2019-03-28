@@ -1,0 +1,11 @@
+<!--components/stepper/stepper.wxml-->
+<view class="stepper" style='width:{{width}};height:{{height}}' >  
+    <!-- 减号 -->  
+    <text class="{{minusStatus}} stepper-text" catchtap="bindMinus"
+    style='width:{{textw}};height:{{allh}};line-height:{{allh}}'>-</text>  
+    <!-- 数值 -->
+    <input disabled type="number" class='stepper-input' value="{{num}}" style='width:{{inputw}};height:{{allh}}'/>
+    <!-- 加号 -->
+    <text class="normal stepper-text" catchtap="bindPlus" style='width:{{textw}};height:{{allh}};line-height:{{allh}}'>+</text>
+</view>
+<view style='clear:both'></view>

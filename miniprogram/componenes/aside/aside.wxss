@@ -103,7 +103,24 @@
   text-align: center;
   font-size: 16px;
   font-weight: bold;
+  position: relative;
 }
+
+.myintegral,.coupon{
+  position: absolute;
+  top:7rpx;
+  font-size: 12px;
+  color:#232323;
+  background: #dedede;
+  border-radius: 10rpx;
+  width: 30%;
+}
+.myintegral .integral-num,.coupon .coupon-num{
+      color: rgb(254, 59, 140);
+}
+.myintegral{left:50rpx;}
+.coupon{right: 50rpx;}
+
 .lnb-tab-area{
     padding: 0 36rpx 0 36rpx;
     margin-bottom: 60rpx;

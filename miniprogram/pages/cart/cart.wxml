@@ -1,2 +1,56 @@
-<!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+
+<mother>
+  <view slot='placehoder2'>
+    
+    <view class='sub-tit head-line'>
+      <text class='title'>购物车</text>
+    </view>
+
+    <form bindsubmit='submit'>
+      <view class='goods'>
+        <view class='good-allchoose'>
+          <view class='good-check'>
+            <checkbox></checkbox>
+          </view>
+          <text>全部选择</text>
+        </view>
+        <checkbox-group name='choose'>
+          <block wx:for='{{goods}}' wx:key=''>
+            <view class='good-info'>
+              <view class='good-check'>
+                <checkbox value='{{index}}'></checkbox>
+              </view>
+              <view style='padding:20rpx 0;flex: 0 0 auto;width:30%'>
+                <image src='{{item.pic[0]}}' mode='widthFix'></image>
+              </view>
+              <view class='good-detail'>
+                <view style='text-align: left;display: block;padding:30rpx 20rpx 0 40rpx;'>
+                  <view style='color:#333;'>{{item.title}}</view>
+                  <view class='blk'></view>
+                  <view>{{item.color}}/{{item.size}}</view>
+                  <view class='blk'></view>
+                </view>
+              </view>
+            </view>
+            <view class='good-number'>
+              <view class='cart-num-box'>
+                <view class='buy-num'>
+                  <stepper name='buynum'>
+                  </stepper>
+                </view>
+                <view class='good-price'>
+                  <text>销售价格 US${{item.price}}\n</text>
+                  <text>{{item.price}}</text>
+                </view>
+                <view class='good-delete'>
+                  <image src='../../images/bg_delete.png' mode='widthFix'></image>
+                </view>
+              </view>
+            </view>
+          </block>
+        </checkbox-group>
+      </view>
+    </form>
+  </view>
+</mother>
+

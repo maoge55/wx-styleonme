@@ -101,13 +101,12 @@ Page({
       });
       return;
     }
-    wx.showToast({
-      title: '提交成功',
-      icon: 'loading',
-      duration:5000,
+    wx.showLoading({
+      title: '修改成功',
     })
     let userInfo=wx.getStorageSync('userInfo')||{}
     userInfo.telephone=phoneNum;
+    wx.hideLoading()
     wx.setStorageSync('userInfo', userInfo)
     setTimeout(()=>wx.navigateBack({
       url: '../compleInfo/compleInfo'

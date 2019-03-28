@@ -1,11 +1,9 @@
-
 <mother>
   <view slot='placehoder2'>
-    
+
     <view class='sub-tit head-line'>
       <text class='title'>购物车</text>
     </view>
-
     <form bindsubmit='submit'>
       <view class='goods'>
         <view class='good-allchoose'>
@@ -21,7 +19,7 @@
                 <checkbox value='{{index}}'></checkbox>
               </view>
               <view style='padding:20rpx 0;flex: 0 0 auto;width:30%'>
-                <image src='{{item.pic[0]}}' mode='widthFix'></image>
+                <image src='{{item.pic}}' mode='widthFix'></image>
               </view>
               <view class='good-detail'>
                 <view style='text-align: left;display: block;padding:30rpx 20rpx 0 40rpx;'>
@@ -39,8 +37,8 @@
                   </stepper>
                 </view>
                 <view class='good-price'>
-                  <text>销售价格 US${{item.price}}\n</text>
-                  <text>{{item.price}}</text>
+                  <text style='font-size: 10px;color: #999;'>销售价格 US${{item.price.priceUSD}}\n</text>
+                  <text style='font-size:14px;font-weight:bold'>US$ {{item.price.priceUSD}}</text>
                 </view>
                 <view class='good-delete'>
                   <image src='../../images/bg_delete.png' mode='widthFix'></image>
@@ -49,8 +47,21 @@
             </view>
           </block>
         </checkbox-group>
+
+        <view class='price-total'>
+          <view class='price-total-box'>
+            <text>总 商品金额 : </text>
+            <text style='color:#252525'>{{totalprice}}</text>
+          </view>
+        </view>
       </view>
+
+      <view class='btn-list btbtn'>
+        <button size='mini' bindtap='tobuy' style='background: #cccccc;color:#fff'>选择商品删除</button>
+        <button size='mini' style='background:#ff9aa4;color:#fff'>选择商品购买</button>
+        <button size='mini' bindtap='tolike' style='background:#ff9aa4;color:#fff' >全部商品订购</button>
+      </view>
+      <view class='blk' style='height:80rpx'></view>
     </form>
   </view>
 </mother>
-

@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/cart/cart",
+    "pages/detail/detail",
     "pages/my/my",
     "pages/home/home",
     "pages/compleInfo/compleInfo",
-    "pages/detail/detail",
     "pages/lists/lists",
     "pages/index/index",
     "pages/teleBind/teleBind"

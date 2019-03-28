@@ -14,12 +14,7 @@ Page({
 
   },
   onLoad: function (options) {
-    let db=wx.cloud.database();
-    db.collection('product').limit(3).get().then(res=>{
-      console.log(res.data);
-      util.listCl(res.data)
-      this.setData({goods:res.data})
-    })
+
   },
 
   /**
@@ -33,6 +28,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //如果缓存数据丢失则从数据库加载
+    if (!wx.getStorageSync('cart')){
+      console.log('缓存购物车数据丢失，从数据库加载')
+      wx.cloud.callFunction({
+        name:'getcart'
+      }).then(res=>{
+        let cart=res.result.data[0].cart
+        console.log('数据库的用户购物车',cart)
+        //恢复缓存
+        wx.setStorageSync('cart', cart)
+        this.setData({
+          goods:cart
+        })
+      })
+    }
+    //否则直接缓存加载
+    else{
+      let cart=wx.getStorageSync('cart')
+      this.setData({goods:cart})
+    }
 
   },
 

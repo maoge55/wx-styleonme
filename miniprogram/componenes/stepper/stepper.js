@@ -22,10 +22,10 @@ Component({
   },
 
   attached() {
+    this.setData({value:this.data.num})
     if(this.data.num>1){
       this.setData({
         minusStatus:'',
-        value:this.data.num
       });
     }
   },

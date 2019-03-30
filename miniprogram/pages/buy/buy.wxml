@@ -1,0 +1,97 @@
+<!--pages/buy/buy.wxml-->
+<wxs src="../../utils/filters.wxs" module="filters" />
+<mother>
+  <view slot='placehoder2'>
+
+
+    <view class='sub-tit head-line'>
+      <text class='title'>订购</text>
+    </view>
+    <view class='buy-table'>
+      <view class='buy-table-title'>
+        <block wx:for='{{tabtit}}' wx:key=''>
+          <view class="tit-item {{(index==1)?'item-name':''}} {{(index==4)?'item-last':''}}">{{item}}</view>
+        </block>
+      </view>
+
+      <block wx:for='{{buy}}' wx:key=''>
+        <view class='buy-table-content'>
+          <view class='cot-item'>
+            <image src='{{item.pic}}' mode='widthFix'></image>
+          </view>
+          <view class='cot-item cot-name'>
+            <text style='color:#333'>{{item.title}}\n</text>
+            <text>{{item.color}}/{{item.size}}</text>
+          </view>
+          <view class='cot-item '>
+            <text>¥\n{{filters.toFix(item.price.priceCNY)}}</text>
+          </view>
+          <view class='cot-item '>{{item.buynum}}个</view>
+          <view class='cot-item  item-last'>
+            <text>¥\n{{filters.toFix(item.buynum*item.price.priceCNY)}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <view class='totalprice'>
+      共
+      <text>{{buy.length}}</text> 件商品
+      <text> </text> 合计：
+      <text>¥{{totalPrice}}</text>
+    </view>
+    <!-- 收货地址 -->
+    <view class='address' bindtap='chooseAdd'>
+      <block wx:if='{{!!address}}'>
+        <image src='../../images/address_icon.png'></image>
+        <view class='add-detail ren'>收货人：{{address.userName}}</view>
+        <view class='add-detail tel'>{{address.telNumber}}</view>
+        <view class='add-detail detailinfo'>收货地址：{{detailInfo}}</view>
+      </block>
+      <block wx:else>
+        <image src='../../images/add.png'></image>
+        <view class='xz'>新增收货地址</view>
+      </block>
+      <view class='arrow-sign'></view>
+
+    </view>
+    <!--  -->
+    <view class='border'></view>
+    <view class='border'></view>
+    <view class='line'></view>
+    <popup title='配送方式'>
+      <view class='buyer-choose' slot='cot'>
+        <view class='gd'>配送方式</view>
+        <input value='{{psfz}}' disabled></input>
+        <text>{{psf}}</text>
+        <view class='arrow-sign'></view>
+      </view>
+      <view slot='hide'>
+        <block wx:for='{{sends}}' wx:key=''>
+          <view class='send-item'>
+            <text>{{item.name}}</text>
+            <text>{{item.sdname}}</text>
+            <text>{{item.sdprice}}</text>
+          </view>
+        </block>
+      </view>
+    </popup>
+    <view class='line'></view>
+    <view class='buyer-choose'>
+      <view class='gd'>卡劵</view>
+      <input placeholder='如需备注请输入'></input>
+
+    </view>
+    <view class='line'></view>
+    <view class='buyer-choose'>
+      <view class='gd'>订单备注</view>
+      <input placeholder='如需备注请输入'></input>
+    </view>
+    <view class='line'></view>
+    <view class='foot'>
+      <text>合计：</text>
+      <view>¥{{totalPrice}}</view>
+      <button size='mini' type='warn' bindtap='toPay' disabled='{{btnFlag}}'>立即支付</button>
+    </view>
+  </view>
+</mother>

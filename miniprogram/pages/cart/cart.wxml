@@ -1,3 +1,7 @@
+<wxs src="../../utils/filters.wxs" module="filters" />
+<popup>
+  <view>1223</view>
+</popup>
 <mother>
   <view slot='placehoder2'>
 
@@ -8,15 +12,15 @@
       <view class='goods'>
         <view class='good-allchoose'>
           <view class='good-check'>
-            <checkbox></checkbox>
+            <checkbox checked='{{allchoose}}' bindtap='onallchoose'></checkbox>
           </view>
           <text>全部选择</text>
         </view>
-        <checkbox-group name='choose'>
+        <checkbox-group name='choose' bindchange='onchoose'>
           <block wx:for='{{goods}}' wx:key=''>
             <view class='good-info'>
               <view class='good-check'>
-                <checkbox value='{{index}}'></checkbox>
+                <checkbox value='{{index}}' checked='{{flag}}'></checkbox>
               </view>
               <view style='padding:20rpx 0;flex: 0 0 auto;width:30%'>
                 <image src='{{item.pic}}' mode='widthFix'></image>
@@ -33,15 +37,15 @@
             <view class='good-number'>
               <view class='cart-num-box'>
                 <view class='buy-num'>
-                  <stepper name='buynum'>
+                  <stepper name='buynum{{index}}' num='{{item.buynum}}' bindnumChange='upbuynum' data-index='{{index}}'>
                   </stepper>
                 </view>
                 <view class='good-price'>
-                  <text style='font-size: 10px;color: #999;'>销售价格 US${{item.price.priceUSD}}\n</text>
-                  <text style='font-size:14px;font-weight:bold'>US$ {{item.price.priceUSD}}</text>
+                  <text style='font-size: 10px;color: #999;'>销售价格 ¥{{filters.toFix(item.price.priceCNY*item.buynum)}}\n</text>
+                  <text style='font-size:14px;font-weight:bold'>¥ {{filters.toFix(item.price.priceCNY*item.buynum)}}</text>
                 </view>
                 <view class='good-delete'>
-                  <image src='../../images/bg_delete.png' mode='widthFix'></image>
+                  <image src='../../images/bg_delete.png' mode='widthFix' catchtap='onedel' data-index='{{index}}'></image>
                 </view>
               </view>
             </view>
@@ -57,9 +61,9 @@
       </view>
 
       <view class='btn-list btbtn'>
-        <button size='mini' bindtap='tobuy' style='background: #cccccc;color:#fff'>选择商品删除</button>
-        <button size='mini' style='background:#ff9aa4;color:#fff'>选择商品购买</button>
-        <button size='mini' bindtap='tolike' style='background:#ff9aa4;color:#fff' >全部商品订购</button>
+        <button size='mini' name='delete' style='background: #cccccc;color:#fff;'  bindtap='choosedel'>选择商品删除</button>
+        <button size='mini' style='background:#ff9aa4;color:#fff' form-type='submit'  value='1' >选择商品购买</button>
+        <button size='mini' bindtap='tolike' style='background:#ff9aa4;color:#fff' bindtap='allbuy'>全部商品订购</button>
       </view>
       <view class='blk' style='height:80rpx'></view>
     </form>

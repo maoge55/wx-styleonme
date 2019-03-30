@@ -13,9 +13,9 @@
 }
 
 .sub-tit {
-  padding: 8rpx 0 8rpx 0;
+  padding: 16rpx 0 16rpx 0;
   display: inline-block;
-  width: 98%;
+  width: 100%;
 }
 
 .title {
@@ -27,4 +27,16 @@
   color: #363636;
   font-size: 14px;
   font-weight: bold;
+}
+
+.arrow-sign {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -4px;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid #b2b2b2;
+  border-bottom: 1px solid #b2b2b2;
+  -webkit-transform: rotate(-45deg);
 }

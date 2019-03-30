@@ -1,0 +1,7 @@
+
+var toFix = function (d) {
+  return d.toFixed(2);
+}
+module.exports = {
+  toFix:toFix
+}

@@ -1,0 +1,14 @@
+<view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+    <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+      <view class='title'>{{title}}</view>
+      <view style='height:30rpx'></view>
+      <view class='content'>
+        <slot name='hide'></slot>
+      </view>
+    </view>
+</view>
+
+<view>
+  <slot name='cot' bindtap="showModal"></slot>
+</view>

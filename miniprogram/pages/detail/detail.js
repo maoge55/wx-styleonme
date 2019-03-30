@@ -270,7 +270,6 @@ Page({
 
   //加入购物车
   addcart: function() {
-    wx.showLoading();
     var {
       progg,
       pro
@@ -282,18 +281,21 @@ Page({
     } = progg;
     if (!color) {
       wx.showModal({
-        title: '请选择颜色',
+        title: '提示',
+        content:'请选择颜色',
         showCancel: false
       })
       return;
     }
     if (!size) {
       wx.showModal({
-        title: '请选择大小',
+        title: '提示',
+        content:'请选择大小',
         showCancel: false
       })
       return;
     }
+    wx.showLoading();
     buynum = parseInt(buynum)
     var price = pro.price;
     var priceCNY = parseFloat(price)
@@ -326,9 +328,16 @@ Page({
     }).then(res=>{
       console.log(res.result)
       wx.hideLoading();
-      wx.showToast({
+      wx.showModal({
         title: '加入购物车成功',
-        duration:3000
+        content: '是否现在去结算',
+        success(res){
+          if(res.confirm){
+            wx.navigateTo({
+              url: '../cart/cart',
+            })
+          }
+        }
       })
     })
   },

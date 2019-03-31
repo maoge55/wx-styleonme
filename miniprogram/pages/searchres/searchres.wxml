@@ -1,0 +1,14 @@
+<mother bindtobottom='loadmore'>
+  <view slot='placehoder2'>
+    <view class='maincontent'>
+      <view style='height:30rpx'></view>
+      <view class='title'>{{title}}</view>
+      <view style='height:30rpx'></view>
+      <list listdata='{{searchpro}}' grid='2'></list>
+    </view>
+
+    <view class='load-icon' hidden='{{!flag}}'>
+      <image src='../../images/icons/ajax-loader.gif' mode='widthFix'></image>
+    </view>
+  </view>
+</mother>

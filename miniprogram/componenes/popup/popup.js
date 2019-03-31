@@ -31,7 +31,7 @@ Component({
         hideModal: false
       })
       var animation = wx.createAnimation({
-        duration: 600, //动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+        duration: 200, //动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
         timingFunction: 'ease', //动画的效果 默认值是linear
       })
       this.animation = animation
@@ -53,7 +53,7 @@ Component({
         that.setData({
           hideModal: true
         })
-      }, 720) //先执行下滑动画，再隐藏模块
+      }, 200) //先执行下滑动画，再隐藏模块
 
     },
 

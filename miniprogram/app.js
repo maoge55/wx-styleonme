@@ -15,7 +15,7 @@ App({
       success: res => {
         if (!res.authSetting['scope.userInfo']){
           wx.authorize({
-            scope: 'userInfo',
+            scope: 'scope.userInfo',
           })
         }
         if (res.authSetting['scope.userInfo']) {
@@ -28,6 +28,7 @@ App({
                 userLocation: res.userInfo.country + '-' + res.userInfo.province + '-' +                                 res.userInfo.city}
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = userInfo
+              //更新数据库
               wx.cloud.callFunction({
                 name:'adduser',
                 data:userInfo

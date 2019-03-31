@@ -11,7 +11,7 @@
   <view class='login' catchtap='tomy'>
     <image src='{{imgs[3]}}' class='login-img'></image>
   </view>
-  <view class='cart'>
+  <view class='cart' catchtap='tocart'>
     <image src='{{imgs[4]}}' class='cart-img'></image>
     <view class='cart-num'>{{cartNum}}</view>
   </view>

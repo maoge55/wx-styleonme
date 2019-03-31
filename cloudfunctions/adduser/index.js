@@ -46,6 +46,7 @@ exports.main = async (event, context) => {
       data:{
         openid:wxContext.OPENID,
         couponid:'DYL46CJOSWH70TRE',
+        title:'注册会员优惠券',
         dicount:3.00,
         effective:mydate+'~'+mydate2
       }

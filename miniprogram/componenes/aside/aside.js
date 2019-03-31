@@ -71,16 +71,19 @@ Component({
     app.userInfoReadyCallback = function () {
       z.setData({
         userInfo: app.globalData.userInfo,
+        isbind:true
       })
     }
-    this.setData({ userInfo: app.globalData.userInfo,isbind:true})
+    console.log('页面获取头像',app.globalData.userInfo)
+    if(app.globalData.userInfo)
+    {this.setData({ userInfo: app.globalData.userInfo,isbind:true})}
     //调用获取当前积分总数和优惠劵总数的云函数
     wx.cloud.callFunction({
       name:'getwelfare',
     }).then(res=>{
       let integral=res.result.integral;
       let couponNum=res.result.couponNum;
-      console.log(integral,couponNum)
+      console.log('用户积分:'+integral,'优惠券数:'+couponNum)
       this.setData({integral:integral.toFixed(2),couponNum:couponNum})
     })
   },
@@ -111,16 +114,30 @@ Component({
       console.log(userInfo)
       userInfo ={
         userName: userInfo.nickName,
-          userImg: userInfo.avatarUrl,
-            userLocation: userInfo.country + '-' + userInfo.province + '-' + userInfo.city
+        userImg: userInfo.avatarUrl,
+        userLocation: userInfo.country + '-' + userInfo.province + '-' + userInfo.city
       }
       this.setData({userInfo:userInfo,isbind:true})
+      app.globalData.userInfo=userInfo;
+      wx.authorize({
+        scope: 'scope.userInfo',
+      })
+      wx.getUserInfo()
       //添加用户,并将信息写入数据库
       if(!this.data.userInfo){console.log('获取失败');retrun;}
       wx.cloud.callFunction({
         name:'adduser',
         data:userInfo
-      }).then(res=>console.log(res))
+      }).then(res=>{console.log(res)
+        wx.cloud.callFunction({
+          name: 'getwelfare',
+        }).then(res => {
+          let integral = res.result.integral;
+          let couponNum = res.result.couponNum;
+          console.log('用户积分:' + integral, '优惠券数:' + couponNum)
+          this.setData({ integral: integral.toFixed(2), couponNum: couponNum })
+        })
+      })
     },
 
     tocompleInfo:function(e){

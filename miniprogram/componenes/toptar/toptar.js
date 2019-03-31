@@ -16,7 +16,14 @@ Component({
     flag:true,
     flag2:true
   },
-
+  pageLifetimes: {
+    show() {
+      if(!!wx.getStorageSync('cart')){
+        let cart=wx.getStorageSync('cart')
+        this.setData({cartNum:cart.length})
+      }
+    },
+  },
   /**
    * 组件的方法列表
    */
@@ -53,6 +60,14 @@ Component({
 
     tolists:function(e){
       console.log(e.detail.value)
+      let keyword=e.detail.value;
+      wx.showLoading({
+        title: '正在搜索',
+      })
+      wx.reLaunch({
+        url: '../../pages/searchres/searchres?keyword='+keyword+'',
+        success:res=>wx.hideLoading()
+      })
     },
 
     tohome:function(){
@@ -67,7 +82,12 @@ Component({
         }
       })
     },
-
+    tocart:function(){
+      wx.showLoading()
+      wx.reLaunch({
+        url: '../../pages/cart/cart',
+      })
+    },
     tomy:function(){
       wx.showLoading({
       })

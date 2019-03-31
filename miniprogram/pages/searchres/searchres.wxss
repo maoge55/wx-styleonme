@@ -1,0 +1,18 @@
+/* pages/searchres/searchres.wxss */
+.maincontent {
+  clear: both;
+  padding-top: 10rpx;
+  width: 750rpx;
+  display: inline-block;
+}
+.load-icon {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  z-index: 20000;
+}
+.load-icon image {
+  width: 20px;
+  margin: 0 auto;
+}

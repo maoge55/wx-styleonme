@@ -2,8 +2,6 @@
 <wxs src="../../utils/filters.wxs" module="filters" />
 <mother>
   <view slot='placehoder2'>
-
-
     <view class='sub-tit head-line'>
       <text class='title'>订购</text>
     </view>
@@ -38,7 +36,7 @@
       共
       <text>{{buy.length}}</text> 件商品
       <text> </text> 合计：
-      <text>¥{{totalPrice}}</text>
+      <text>¥{{filters.toFix(totalprice)}}</text>
     </view>
     <!-- 收货地址 -->
     <view class='address' bindtap='chooseAdd'>
@@ -59,29 +57,56 @@
     <view class='border'></view>
     <view class='border'></view>
     <view class='line'></view>
-    <popup title='配送方式'>
+    <popup title='配送方式' id='popsend'>
       <view class='buyer-choose' slot='cot'>
         <view class='gd'>配送方式</view>
-        <input value='{{psfz}}' disabled></input>
-        <text>{{psf}}</text>
+        <input value='{{send.name}}' disabled style='width:40%'></input>
+        <text>{{send.sdname}} {{send.sdprice}}</text>
         <view class='arrow-sign'></view>
       </view>
       <view slot='hide'>
-        <block wx:for='{{sends}}' wx:key=''>
-          <view class='send-item'>
-            <text>{{item.name}}</text>
-            <text>{{item.sdname}}</text>
-            <text>{{item.sdprice}}</text>
-          </view>
-        </block>
+        <radio-group bindchange='getsendfs'>
+          <block wx:for='{{sends}}' wx:key=''>
+            <label for='sd{{index}}'>
+              <view class='send-item'>
+                <text>{{item.name}}</text>
+                <text style='width:40%'>{{item.sdname}}</text>
+                <text>{{item.sdprice}}</text>
+                <view class='send-item-choose'>
+                  <radio value='{{index}}' id='sd{{index}}'></radio>
+                </view>
+              </view>
+            </label>
+          </block>
+        </radio-group>
       </view>
     </popup>
     <view class='line'></view>
-    <view class='buyer-choose'>
-      <view class='gd'>卡劵</view>
-      <input placeholder='如需备注请输入'></input>
-
-    </view>
+    <popup title='选择优惠券' id='popcoupon'>
+      <view class='buyer-choose' slot='cot'>
+        <view class='gd'>优惠券</view>
+        <input value='{{coupon.title}}' disabled style='width:40%'></input>
+        <text wx:if='{{coupon.dicount==0}}'></text>
+        <text wx:else>-{{filters.toFix(coupon.dicount*6)}}元</text>
+        <view class='arrow-sign'></view>
+      </view>
+      <view slot='hide'>
+        <radio-group bindchange='getsendfs' bindchange='getcoupon'>
+          <block wx:for='{{coupons}}' wx:key=''>
+            <label id='co{{index}}'>
+              <view class='send-item'>
+                <text>{{item.title}}</text>
+                <text >{{filters.toFix(item.dicount*6)}}</text>
+                <text style='width:40%'>{{item.effective}}</text>
+                <view class='send-item-choose'>
+                  <radio value='{{index}}' id='co{{index}}'></radio>
+                </view>
+              </view>
+            </label>
+          </block>
+        </radio-group>
+      </view>
+    </popup>
     <view class='line'></view>
     <view class='buyer-choose'>
       <view class='gd'>订单备注</view>
@@ -90,8 +115,8 @@
     <view class='line'></view>
     <view class='foot'>
       <text>合计：</text>
-      <view>¥{{totalPrice}}</view>
-      <button size='mini' type='warn' bindtap='toPay' disabled='{{btnFlag}}'>立即支付</button>
+      <view>¥{{filters.toFix(totalprice-coupon.dicount*6)}}</view>
+      <button size='mini' type='warn' bindtap='toPay'>立即支付</button>
     </view>
   </view>
 </mother>

@@ -62,15 +62,27 @@ Component({
       if(top<0){top=0;}
       this.setData({top:top})
     },
-
+    tolove:function(){
+      wx.showLoading()
+      wx.reLaunch({
+        url: '../../pages/love/love',
+        success:(e)=>{
+          wx.hideLoading()
+        }
+      })
+    },
     toTop:function(){
       this.setData({scrollTop:0})
       console.log(this.data.scrollTop)
     },
 
     toCart:function(){
+      wx.showLoading()
       wx.reLaunch({
         url: '../../pages/cart/cart',
+        success:(e)=>{
+          wx.hideLoading()
+        }
       })
     },
 

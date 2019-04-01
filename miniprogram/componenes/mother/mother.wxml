@@ -18,7 +18,7 @@ scroll-top='{{scrollTop}}' catchscrolltolower='touchbottom' lower-threshold='500
 
 <view class='qucik-menu i-class' catchtap='tolikeList'>
   <view class='qucik-menu-item' style='width:80rpx;height:60rpx;background:none;border: none;'>
-    <image src='../../images/icons/add_wishlist.png' mode='widthFix' style='width:90%'></image>
+    <image src='../../images/icons/add_wishlist.png' mode='widthFix' style='width:90%' catchtap='tolove'></image>
   </view>
   <view class='qucik-menu-item' catchtap='toCart'>Cart</view>
   <view class='qucik-menu-item' catchtap='toTop'>▲Top</view>

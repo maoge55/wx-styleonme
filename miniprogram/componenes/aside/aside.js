@@ -128,13 +128,13 @@ Component({
         id: '0',
         icons: '../../images/icons/cart.png',
         title: '购物车',
-        clickurl: ''
+        clickurl: '../../pages/cart/cart'
       },
       {
         id: '1',
         icons: '../../images/icons/like.png',
         title: '收藏夹',
-        clickurl: ''
+        clickurl: '../../pages/love/love'
       },
       {
         id: '2',
@@ -164,7 +164,7 @@ Component({
         id: '6',
         icons: '',
         title: '会员信息修改',
-        clickurl: ''
+        clickurl: '../../pages/compleInfo/compleInfo'
       },
       {
         id: '7',
@@ -179,7 +179,15 @@ Component({
         clickurl: ''
       }
     ],
-    cartnum: 0
+    cartNum: 0
+  },
+  pageLifetimes: {
+    show() {
+      if (!!wx.getStorageSync('cart')) {
+        let cart = wx.getStorageSync('cart')
+        this.setData({ cartNum: cart.length })
+      }
+    },
   },
   ready() {
     if(!app.globalData.userInfo){
@@ -287,7 +295,23 @@ Component({
         this.getwelfare()
       })
     },
-
+    mineclick:function(e){
+      let item=e.currentTarget.dataset.item
+      console.log(item)
+      wx.showLoading()
+      if(item.id=='6'){
+        wx.navigateTo({
+          url: item.clickurl,
+          success: (e) => wx.hideLoading()
+        })
+      }
+      else{
+      wx.reLaunch({
+        url:item.clickurl,
+        success:(e)=>wx.hideLoading()
+      })
+      }
+    },
     tocompleInfo: function(e) {
       wx.navigateTo({
         url: '../../pages/compleInfo/compleInfo',

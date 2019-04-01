@@ -56,10 +56,10 @@
       <block wx:else>
         <block wx:for='{{mine}}' wx:key='{{index}}'>
 
-          <view class='mine-item' data-item='{{item}}'>
+          <view class='mine-item' data-item='{{item}}' catchtap='mineclick'>
             <view hidden='{{index>1}}' style='position:absolute; left:0;top:10rpx;'>
               <image src='{{item.icons}}' class='mine-item-icon'></image>
-              <text hidden='{{index!=0}}' class='cart-num'>{{cartnum}}</text>
+              <text hidden='{{index!=0}}' class='cart-num'>{{cartNum}}</text>
             </view>
             <text>{{item.title}}</text>
           </view>

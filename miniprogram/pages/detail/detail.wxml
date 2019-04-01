@@ -1,4 +1,4 @@
-<mother bindtobottom='loadmore' i-class='qucik-menu' j-class='bottblk'>
+<mother bindtobottom='loadmore' i-class='qucik-menu' j-class='bottblk' id='motherd'>
   <view slot='placehoder2'>
     <!-- 产品名 -->
     <view class="sub_tit head_line">

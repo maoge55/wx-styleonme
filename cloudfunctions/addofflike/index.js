@@ -29,11 +29,11 @@ exports.main = async (event, context) => {
       }).remove()
     }
     return {
-      data:{res:1,mas:'收藏/取消成功',islove:isloved?0:1},
+      data:{res:1,mes:'收藏/取消成功',islove:isloved?0:1},
       event,
       openid: wxContext.OPENID,
       appid: wxContext.APPID,
       unionid: wxContext.UNIONID,
     }
-  }catch(e){return {res:0,mas:'操作失败'}}
+  }catch(e){return {data:{res:0,mes:'操作失败'}}}
 }

@@ -66,10 +66,19 @@ Page({
         return;
       }
       util.listCl(data);
-      this.setData({
-        len: this.data.len + data.length,
-        searchpro: this.data.searchpro.concat(data),
-        flag: false
+      wx.cloud.callFunction({
+        name: 'getlike',
+        data: {
+          openid: '0'
+        }
+      }).then(res => {
+        let likelist = res.result.data;
+        util.tolovelist(data, likelist)
+        this.setData({
+          len: this.data.len + data.length,
+          searchpro: this.data.searchpro.concat(data),
+          flag: false
+        })
       })
       console.log('产品数量',this.data.searchpro.length)
     })

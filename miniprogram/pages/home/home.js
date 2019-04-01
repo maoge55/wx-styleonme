@@ -47,13 +47,31 @@ Page({
       if(res.data.length==0){this.setData({flag1:false});return;}
       var data=res.data.slice(0)
       util.listCl(data);
-      this.setData({bestpro:this.data.bestpro.concat(data),flag2:true});
+      wx.cloud.callFunction({
+        name: 'getlike',
+        data: {
+          openid: '0'
+        }
+      }).then(res => {
+        let likelist = res.result.data;
+        util.tolovelist(data, likelist)
+        this.setData({bestpro:this.data.bestpro.concat(data),flag2:true});
+      })
     })
 
     pro.limit(9).skip(100).get().then(res=>{
       let data=res.data;
       util.listCl(data);
+      wx.cloud.callFunction({
+        name: 'getlike',
+        data: {
+          openid: '0'
+        }
+      }).then(res => {
+        let likelist = res.result.data;
+        util.tolovelist(data, likelist)
       this.setData({arrivalpro:data})
+      })
     })
   },
 
@@ -105,6 +123,7 @@ Page({
       util.listCl(arrdata);
       this.setData({tppro:arrdata})
     })
+
 
     // wx.cloud.callFunction({
     //   name:'login'

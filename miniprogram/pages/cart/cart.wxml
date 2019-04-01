@@ -1,8 +1,5 @@
 <wxs src="../../utils/filters.wxs" module="filters" />
-<popup>
-  <view>1223</view>
-</popup>
-<mother>
+<mother id='mothercart'>
   <view slot='placehoder2'>
 
     <view class='sub-tit head-line'>
@@ -55,7 +52,7 @@
         <view class='price-total'>
           <view class='price-total-box'>
             <text>总 商品金额 : </text>
-            <text style='color:#252525'>{{totalprice}}</text>
+            <text style='color:#252525'>¥{{totalprice}}</text>
           </view>
         </view>
       </view>

@@ -28,6 +28,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    getcartNum(len){
+      this.setData({cartNum:len})
+    },
+
+    getcartNum2(){
+      if (!!wx.getStorageSync('cart')) {
+        let cart = wx.getStorageSync('cart')
+        this.setData({ cartNum: cart.length })
+      }
+    },
     showleft(){
       this.setData({
         flag:false,

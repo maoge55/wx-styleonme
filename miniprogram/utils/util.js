@@ -28,6 +28,15 @@ function hexToText(data) {    
   return str;  
 }
 
+function tolovelist(prolist,likelist){
+    for(var i=0;i<prolist.length;i++){
+    for(var j=0;j<likelist.length;j++){
+      if(prolist[i].PID==likelist[j].pid){
+        prolist[i].islove=1;break;
+      }
+    }
+  }
+}
 var compareasc = function (prop) {
   return function (obj1, obj2) {
     var val1 = obj1[prop];
@@ -101,8 +110,10 @@ var comparepircedesc=function(price){
   }
 }
 
+
 module.exports = {
   listCl: listCl,
+  tolovelist:tolovelist,
   hexToText: hexToText,
   compareasc:compareasc,
   comparedesc:comparedesc,

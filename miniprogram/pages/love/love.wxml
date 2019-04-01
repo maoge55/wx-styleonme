@@ -1,0 +1,63 @@
+<wxs src="../../utils/filters.wxs" module="filters" />
+<mother id='motherlove'>
+  <view slot='placehoder2'>
+
+    <view class='sub-tit head-line'>
+      <text class='title'>收藏夹</text>
+    </view>
+    <form bindsubmit='submit'>
+      <view class='goods'>
+        <view class='good-allchoose'>
+          <text>全部选择</text>
+          <view class='good-check'>
+            <checkbox checked='{{allchoose}}' bindtap='onallchoose'></checkbox>
+          </view>
+        </view>
+        <checkbox-group name='choose' bindchange='onchoose'>
+          <block wx:for='{{goods}}' wx:key=''>
+            <view class='good-info'>
+
+              <view style='padding:20rpx 0;flex: 0 0 auto;width:30%'>
+                <image src='{{item.pic[0]}}' mode='widthFix' class='image'></image>
+              </view>
+              <view class='good-detail'>
+                <view style='text-align: left;display: block;padding:30rpx 20rpx 0 40rpx;'>
+                  <view style='color:#333;font-weight:400;text-align:center;padding-bottom:20rpx;'>{{item.title}}</view>
+                  <view style='color:#936d37;font-weight:bold;text-align:center'>{{item.price}}</view>
+                  <view class='tr-select'>
+                    <select width='400rpx' nowText='请选择' propArray='{{item.colors}}' catchchoose='select' data-ss='0' data-index='{{index}}'>
+                    </select>
+                  </view>
+                  <view class='tr-select'>
+                    <select width='400rpx' nowText="{{!(item.progg.color)?'请先选择颜色':'请选择'}}" propArray='{{!(item.progg.color)?[]:sizes}}' catchchoose='select' data-ss='1'  data-index='{{index}}' >
+                    </select>
+                  </view>
+                  <view class='tr-select'>
+                    <text>数量</text>
+                    <select width='250rpx' propArray='{{nums}}' catchchoose='select' data-ss='2'  data-index='{{index}}'>
+                    </select>
+                  </view>
+
+                </view>
+              </view>
+              <view class='good-check'>
+                <checkbox value='{{index}}' checked='{{flag}}'></checkbox>
+              </view>
+            </view>
+          </block>
+        </checkbox-group>
+      </view>
+
+      <view class='btn-list btbtn'>
+        <button size='mini' name='delete' style='background: #cccccc;color:#fff;' bindtap='choosedel'>选择商品删除</button>
+        <button size='mini' style='background:#ff9aa4;color:#fff' form-type='submit' value='1'>加入购物车</button>
+      </view>
+
+      <view class='page'>
+        <button bindtap='tolast' disabled="{{(len-6)<=0}}">上一页</button>
+        <button bindtap='tonext' disabled="{{max}}">下一页</button>
+      </view>
+      <view class='blk' style='height:80rpx'></view>
+    </form>
+  </view>
+</mother>

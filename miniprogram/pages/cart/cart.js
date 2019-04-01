@@ -52,6 +52,11 @@ Page({
 
   onShow: function () {
     //如果缓存数据丢失则从数据库加载
+    let timestamps=Date.parse(new Date)
+    if(wx.getStorageSync('cart_expiration')<timestamps){
+      wx.removeStorageSync('cart')
+    }
+    else{console.log('购物车缓存时间',(wx.getStorageSync('cart_expiration')-timestamps)/1000,'秒')}
     if (!wx.getStorageSync('cart')){
       console.log('缓存购物车数据丢失，从数据库加载')
       wx.cloud.callFunction({
@@ -61,6 +66,8 @@ Page({
         console.log('数据库的用户购物车',cart)
         //恢复缓存
         wx.setStorageSync('cart', cart)
+        let timestamps2 = Date.parse(new Date())
+        wx.setStorageSync('cart_expiration', timestamps2 + 7200000)
         this.setData({
           goods:cart
         })
@@ -110,6 +117,7 @@ Page({
     console.log(this.data.choose)
   },
 
+  
   getTotalprice(){
     let totalprice=0;
     let goods=this.data.goods;
@@ -145,7 +153,8 @@ Page({
           }
           console.log(goods)
           that.setData({goods:goods,flag:false,choose:[],allchoose:false})
-          that.getTotalprice()
+          that.getTotalprice();
+          that.getcartNum();
           console.log('当前选择',that.data.choose)
         }
       }
@@ -176,9 +185,14 @@ Page({
             choose: []
           })
           that.getTotalprice();
+          that.getcartNum();
         }
       }
     })
+  },
+  getcartNum(){
+    this.mothercart = this.selectComponent("#mothercart")
+    this.mothercart.calltoptar(this.data.goods.length)
   },
   //页面隐藏则保存购物车数据到缓存和数据库
   savecart(){
@@ -193,7 +207,6 @@ Page({
     this.savecart()
   },
 
-  
   onHide:function(){
    this.savecart()
   }

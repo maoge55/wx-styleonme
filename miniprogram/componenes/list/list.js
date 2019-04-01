@@ -67,16 +67,20 @@ Component({
 
     addofflike:function(e){
       var{index,pid}=e.currentTarget.dataset;
+      wx.showLoading();
       wx.cloud.callFunction({
         name:'addofflike',
         data:{pid:pid}
       }).then(res=>{
+        wx.hideLoading();
         let islove=res.result.data.islove;
         let listdata=this.data.listdata;
         listdata[index].islove=islove
-
         this.setData({
           listdata:listdata
+        })
+        wx.showToast({
+          title: res.result.data.mes,
         })
       })
     }

@@ -35,6 +35,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    calltoptar(length){
+      this.toptar=this.selectComponent("#toptar")
+      this.toptar.getcartNum(length);
+    },
+    calld(){
+      this.toptar=this.selectComponent("#toptar")
+      this.toptar.getcartNum2();
+    },
     showAside:function(e){
       this.setData({
         flag:!e.detail.val,
@@ -61,7 +69,7 @@ Component({
     },
 
     toCart:function(){
-      wx.navigateTo({
+      wx.reLaunch({
         url: '../../pages/cart/cart',
       })
     },

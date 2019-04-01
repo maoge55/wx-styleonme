@@ -321,6 +321,8 @@ Page({
     console.log(good)
     //先将good更新到用户缓存
     this.upstorage(good);
+    this.motherd = this.selectComponent("#motherd")
+    this.motherd.calld()
     //再将good更新数据库上面
     wx.cloud.callFunction({
       name:'addcart',
@@ -328,6 +330,8 @@ Page({
     }).then(res=>{
       console.log(res.result)
       wx.hideLoading();
+      let timestamps = Date.parse(new Date())
+      wx.setStorageSync('cart_expiration', timestamps + 7200000)
       wx.showModal({
         title: '加入购物车成功',
         content: '是否现在去结算',
@@ -344,7 +348,7 @@ Page({
   //缓存上面的购物车数据更新
   upstorage(good) {
     var cart = wx.getStorageSync('cart') || [];
-    if (cart == []) {
+    if (!cart[0]) {
       cart.unshift(good);
       wx.setStorageSync('cart', cart)
     }

@@ -4,7 +4,7 @@ scroll-top='{{scrollTop}}' catchscrolltolower='touchbottom' lower-threshold='500
   <view class="mothercoxtt {{!flag?'':'move-x'}}">
     <cards class='cards'></cards>
     <view class='toptar' style='top:{{top}}px'>
-      <toptar catchmyevent='showAside'></toptar>
+      <toptar catchmyevent='showAside' id='toptar'></toptar>
     </view>
     <view style='height:100rpx'></view>
     <slot name='placehoder1' style='z-index:0;position:relative'></slot>

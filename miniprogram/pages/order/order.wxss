@@ -1,0 +1,36 @@
+page{background: #f2f2f2;}
+/*订单导航栏*/
+.nav{background: #fff; width: 750rpx;display: flex; border-bottom: 4rpx solid #d0d0d0;}
+.nav-item{text-align: center;height: 58rpx;line-height: 58rpx;font-size: 12px;color: #363636;width: 150rpx;padding: 20rpx 0; }
+.activenav{border-bottom: 3rpx solid #e64340;color: #e64340 !important;}
+.content{width: 750rpx; position: relative;}
+
+/*无订单页面显示*/
+.noorder{ text-align: center;}
+.noorder image{width: 60rpx;height: 70rpx;margin-top:250rpx;}
+.noorder view{margin-top:60rpx;font-size: 14px;color: #666}
+
+/*订单*/
+.item{background: #fff; padding: 0 20rpx;margin-bottom: 20rpx;}
+.time{display: flex; padding: 10rpx 0 15rpx 0; justify-content: space-between;font-size: 14px; border-bottom: 2rpx #dedede solid}
+.ddtype{color: #e64340;}
+.ddnumber{padding: 10rpx 0; font-size: 12px; border-bottom: #dedede 2rpx solid}
+.pro{display: flex;padding: 20rpx;font-size: 12px;color: #666;position: relative;border-bottom: #dedede solid 2rpx;}
+.pro image{width: 100rpx;height: 100rpx; margin-right: 30rpx;}
+.info{flex-shrink: 1;max-width: 70%}
+.count{position: absolute;bottom:20rpx; right: 30rpx;}
+.bot{display: flex; font-size: 14px; align-items: center; position: relative;height: 80rpx;}
+.bot button{margin: 0;height: 70rpx; line-height: 70rpx;position: absolute;right: 0; }
+.zf{right: 190rpx!important;background: #e64340;color: #fff; }
+.bot text{color: #e64340;}
+.foot{padding: 30rpx; text-align: center;color: #999; font-size: 12px;background: #fff;}
+.mask{position: fixed; top:0;left:0; width: 750rpx; height: 100%; background:rgba(0,0,0,         0.4);}
+.tank{background:#fff;border-radius: 30rpx; position: fixed;
+top:30%;width:650rpx;left:50rpx;border-bottom: 2rpx #dedede solid;z-index: 999;}
+.tank .res-item{padding: 30rpx;}
+
+
+
+
+
+

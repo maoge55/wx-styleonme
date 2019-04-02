@@ -1,0 +1,45 @@
+<view class='nav'>
+  <block wx:for='{{nav}}' wx:key=''>
+    <view class="nav-item {{(currentNavId==item.navid)?'activenav':''}}" data-id='{{item.navid}}' bindtap='navClick'>{{item.title}}</view>
+  </block>
+</view>
+
+<view class='content'>
+  <block wx:if='{{orders[0]}}'>
+    <block wx:for='{{orders}}' wx:key=''>
+      <view class='item'>
+        <view class='time'>
+          <view>下单时间{{item[0].time}}</view>
+          <view class='ddtype'>{{nav[currentNavId].title}}</view>
+        </view>
+        <view class='ddnumber'>订单号：SH0000</view>
+        <block wx:for='{{item}}' wx:key='' wx:for-item='pro'>
+          <view class='pro'>
+            <image src='{{pro.imgUrls[0]}}'></image>
+            <view class='info'>{{pro.title}}</view>
+            <view class='count'>×{{pro.count}}</view>
+          </view>
+        </block>
+        <view class='bot'>
+          <text>合计：{{item[0].totalPrice}}</text>
+          <button size='mini' class='zf' >支付订单</button>
+          <button size='mini' catchtap='deledd' data-index='{{index}}'>取消订单</button>
+        </view>
+      </view>
+    </block>
+    <view class='foot'>没有更多了</view>
+  </block>
+
+  <view wx:else class='noorder'>
+    <image src='../../images/dd.png'></image>
+    <view>暂无订单</view>
+  </view>
+</view>
+
+<view class='mask' hidden='{{flag}}'></view>
+<view class='tank' hidden='{{flag}}'>
+  <block wx:for='{{tkreason}}' wx:key=''>
+    <view class='res-item' data-rid='{{item.id}}' catchtap='chooseRea'>{{item.text}}</view>
+  </block>
+</view>
+

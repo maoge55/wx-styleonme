@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+      "mother": "../../componenes/mother/mother",
+      "nav":"../../componenes/nav/nav"
+  }
+}

@@ -267,58 +267,22 @@ Page({
       navcurrent: e.detail.id
     })
   },
-
+  tobuy:function(){
+    let good=this.trangood();
+    if(!good){return;}
+    let data=[];
+    data.push(good);
+    let temp=JSON.stringify(data)
+    console.log(temp)
+    wx.navigateTo({
+      url: '../buy/buy?buy=' + temp + '',
+      success: e => { wx.hideLoading()}
+    })
+  },
   //加入购物车
   addcart: function() {
-    var {
-      progg,
-      pro
-    } = this.data;
-    var {
-      color,
-      size,
-      buynum
-    } = progg;
-    if (!color) {
-      wx.showModal({
-        title: '提示',
-        content:'请选择颜色',
-        showCancel: false
-      })
-      return;
-    }
-    if (!size) {
-      wx.showModal({
-        title: '提示',
-        content:'请选择大小',
-        showCancel: false
-      })
-      return;
-    }
-    wx.showLoading();
-    buynum = parseInt(buynum)
-    var price = pro.price;
-    var priceCNY = parseFloat(price)
-    for (let i = 0; i < price.length; i++) {
-      if (price[i] == '$') {
-        var priceUSD = parseFloat(price.substr(i + 1));
-        break;
-      }
-    }
-    console.log(priceCNY, priceUSD)
-    var good = {
-      pid: pro.PID,
-      title: pro.title,
-      price: {
-        priceCNY: priceCNY,
-        priceUSD: priceUSD
-      },
-      pic: pro.pic[0],
-      buynum: buynum,
-      color: color,
-      size: size
-    }
-    console.log(good)
+    let good=this.trangood()
+    if(!good){return;}
     //先将good更新到用户缓存
     this.upstorage(good);
     this.motherd = this.selectComponent("#motherd")
@@ -369,5 +333,58 @@ Page({
       }
     }
     console.log(wx.getStorageSync('cart'))
+  },
+  //将当前产品打包成good对象
+  trangood(){
+    var {
+      progg,
+      pro
+    } = this.data;
+    var {
+      color,
+      size,
+      buynum
+    } = progg;
+    if (!color) {
+      wx.showModal({
+        title: '提示',
+        content: '请选择颜色',
+        showCancel: false
+      })
+      return;
+    }
+    if (!size) {
+      wx.showModal({
+        title: '提示',
+        content: '请选择大小',
+        showCancel: false
+      })
+      return;
+    }
+    wx.showLoading();
+    buynum = parseInt(buynum)
+    var price = pro.price;
+    var priceCNY = parseFloat(price)
+    for (let i = 0; i < price.length; i++) {
+      if (price[i] == '$') {
+        var priceUSD = parseFloat(price.substr(i + 1));
+        break;
+      }
+    }
+    console.log(priceCNY, priceUSD)
+    var good = {
+      pid: pro.PID,
+      title: pro.title,
+      price: {
+        priceCNY: priceCNY,
+        priceUSD: priceUSD
+      },
+      pic: pro.pic[0],
+      buynum: buynum,
+      color: color,
+      size: size
+    }
+    console.log(good)
+    return good;
   }
 })

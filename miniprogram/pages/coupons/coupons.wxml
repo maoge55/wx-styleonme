@@ -1,0 +1,77 @@
+<wxs src="../../utils/filters.wxs" module="filters" />
+<mother>
+  <view slot='placehoder2'>
+    <view class='sub-tit head-line'>
+      <view class='title'>我的优惠劵</view>
+    </view>
+
+    <view class='nav'>
+      <nav type='maoge' titles='{{nav}}' bindswitchtab='getcurnav'></nav>
+    </view>
+
+    <view style='height:50rpx'></view>
+    <block wx:if='{{!!coupons[curnav]}}'>
+      <view class='coupon-tab'>
+        <view class='coupon-table-title'>
+          <block wx:for='{{tabtit}}' wx:key=''>
+            <view class="tit-item {{(index==0)?'item-name':''}} {{(index==2)?'item-last':''}}">{{item}}</view>
+          </block>
+        </view>
+      </view>
+
+      <block wx:if='{{coupons[curnav][0]}}'>
+        <block wx:for='{{coupons[curnav]}}' wx:key=''>
+          <view class='coupon-table-content'>
+            <view class='cot-item cot-name'>
+              <text style='color:#222'>{{item.title}}\n</text>
+              <text style='color:#999'>{{(item.couponid)}}</text>
+            </view>
+            <view class='cot-item'>
+              <text>{{item.effective}}</text>
+            </view>
+            <view class='cot-item item-last'>
+              <text>¥{{filters.toFix(item.dicount*6)}}</text>
+            </view>
+          </view>
+        </block>
+      </block>
+
+      <block wx:else>
+        <view style='border-bottom:1px solid #dedede;text-align:center;font-size:12px;padding:10rpx'>没有优惠劵</view>
+      </block>
+    </block>
+    <block wx:else>
+      <view style='width:30rpx;'></view>
+      <view style='color:#000;font-size:12px;text-align:center'>
+        没有正在进行的优惠活动
+      </view>
+    </block>
+    <view style='height:100rpx;'></view>
+
+    <view id="wrap-regist-cpn" class="display-on">
+      <view class="rc-body" style="display: block;">
+        <view class="rc-noti">
+          * 优惠码不能重复登入
+        </view>
+        <view>
+          <form name="form-regist-cpn">
+            <view style='display:flex;align-items:center;width750rpx;'>
+              <view class='li'>
+                <text decode space>优惠券码&nbsp;&nbsp;&nbsp;</text>
+              </view>
+              <view class='li' style='width:500rpx;'>
+                <input class="input-text tp01" type="text" name="cpn_no" value="" style="width: 100%;" placeholder="请输入优惠码。" />
+              </view>
+            </view>
+          </form>
+        </view>
+      </view>
+      <view class="rc-wrap-bt">
+        <button class="rc-bt tp2 rc-cancel" style="display: inline-block;">
+          取消
+        </button>
+        <button class="rc-bt tp1 rc-regist"> 输入优惠码</button>
+      </view>
+    </view>
+  </view>
+</mother>

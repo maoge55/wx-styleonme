@@ -1,0 +1,35 @@
+<wxs src="../../utils/filters.wxs" module="filters" />
+<mother>
+  <view slot='placehoder2'>
+    <view class='sub-tit head-line'>
+      <view class='title'>我的积分</view>
+    </view>
+
+    <view class='inte-tab'>
+      <view class='inte-table-title'>
+        <block wx:for='{{tabtit}}' wx:key=''>
+          <view class="tit-item {{(index==0)?'item-name':''}} {{(index==4)?'item-last':''}}">{{item}}</view>
+        </block>
+      </view>
+    </view>
+
+
+    <block wx:for='{{inte}}' wx:key=''>
+      <view class='inte-table-content'>
+        <view class='cot-item cot-name'>
+          <text>{{item.content}}</text>
+        </view>
+        <view class='cot-item'>
+          <text>{{item.use}}</text>
+        </view>
+        <view class='cot-item '>
+          <text>¥{{filters.toFix(item.total*3)}}</text>
+        </view>
+        <view class='cot-item '>¥{{filters.toFix(item.leave*3)}}</view>
+        <view class='cot-item  item-last'>
+          <text>{{item.getTime}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</mother>

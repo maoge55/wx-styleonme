@@ -379,5 +379,13 @@ Page({
       }
     }
     console.log(wx.getStorageSync('cart'))
+  },
+
+  todetail:function(e){
+    let pid=e.currentTarget.dataset.pid;
+    console.log(pid)
+    wx.navigateTo({
+      url: '../detail/detail?PID='+pid+'',
+    })
   }
 })

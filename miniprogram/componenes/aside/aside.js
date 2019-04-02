@@ -140,19 +140,19 @@ Component({
         id: '2',
         icons: '',
         title: '我的积分',
-        clickurl: ''
+        clickurl: '../../pages/integral/integral'
       },
       {
         id: '3',
         icons: '',
         title: '我的优惠劵',
-        clickurl: ''
+        clickurl: '../../pages/coupons/coupons'
       },
       {
         id: '4',
         icons: '',
         title: '订单/配送查询',
-        clickurl: ''
+        clickurl: '../../pages/order/order'
       },
       {
         id: '5',
@@ -299,7 +299,7 @@ Component({
       let item=e.currentTarget.dataset.item
       console.log(item)
       wx.showLoading()
-      if(item.id=='6'){
+      if(item.id=='6'||item.id=='4'){
         wx.navigateTo({
           url: item.clickurl,
           success: (e) => wx.hideLoading()

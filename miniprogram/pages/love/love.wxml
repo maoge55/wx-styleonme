@@ -17,7 +17,7 @@
           <block wx:for='{{goods}}' wx:key=''>
             <view class='good-info'>
 
-              <view style='padding:20rpx 0;flex: 0 0 auto;width:30%'>
+              <view style='padding:20rpx 0;flex: 0 0 auto;width:30%' catchtap='todetail' data-pid='{{item.PID}}'>
                 <image src='{{item.pic[0]}}' mode='widthFix' class='image'></image>
               </view>
               <view class='good-detail'>

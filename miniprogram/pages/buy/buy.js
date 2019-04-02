@@ -7,7 +7,7 @@ Page({
   data: {
     buy:[],
     tabtit:['图片','商品名','价格','数量','合计'],
-    address:null,
+    address:null, 
     detailInfo:null,
     send: { sdname: '', name:'请选择配送方式',sdprice:''},
     sends:[

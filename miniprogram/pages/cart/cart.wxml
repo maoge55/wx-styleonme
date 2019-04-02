@@ -19,7 +19,7 @@
               <view class='good-check'>
                 <checkbox value='{{index}}' checked='{{flag}}'></checkbox>
               </view>
-              <view style='padding:20rpx 0;flex: 0 0 auto;width:30%'>
+              <view style='padding:20rpx 0;flex: 0 0 auto;width:30%' catchtap='todetail' data-pid='{{item.pid}}'>
                 <image src='{{item.pic}}' mode='widthFix'></image>
               </view>
               <view class='good-detail'>

@@ -1,0 +1,54 @@
+.inte-table {
+  width: 750rpx;
+  border-bottom: 1px solid #bfc2c7;
+}
+
+.inte-table-title {
+  width: 750rpx;
+  background: #f6f4f1;
+  border-top: 2rpx solid #5f6774;
+  display: flex;
+  align-items: center;
+}
+
+.inte-table-content {
+  width: 750rpx;
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  padding: 8rpx 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.tit-item, .cot-item {
+  height: initial;
+  width: 15%;
+  flex: 0 0 auto;
+  color: #000;
+  padding: 8rpx 0;
+  border-right: 2rpx solid #dadbdc;
+  font-size: 11px;
+  text-align: center;
+}
+
+.cot-item {
+  padding: 0;
+  color: #5f6774;
+  border-right: none;
+}
+.cot-item text,.tit-item text{
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+.item-name {
+  flex: 1 0 auto;
+}
+.cot-name{
+  flex: 1 0 auto;
+  text-align: left;
+}
+.item-last {
+  flex: 0.3 0 auto;
+  border-right: none;
+}

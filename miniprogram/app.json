@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/coupons/coupons",
+    "pages/integral/integral",
+    "pages/order/order",
     "pages/love/love",
     "pages/cart/cart",
     "pages/buy/buy",

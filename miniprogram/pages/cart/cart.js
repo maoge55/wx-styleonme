@@ -194,6 +194,12 @@ Page({
     this.mothercart = this.selectComponent("#mothercart")
     this.mothercart.calltoptar(this.data.goods.length)
   },
+  todetail:function(e){
+    let pid=e.currentTarget.dataset.pid;
+    wx.navigateTo({
+      url: '../detail/detail?PID='+pid+'',
+    })
+  },
   //页面隐藏则保存购物车数据到缓存和数据库
   savecart(){
     console.log('隐藏保存到缓存')

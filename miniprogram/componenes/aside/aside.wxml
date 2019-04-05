@@ -20,12 +20,12 @@
       <image src='{{userInfo.userImg}}' class='userimg'></image>
     </view>
     <view class='username'>
-      <view class='myintegral'>
+      <view class='myintegral' catchtap='tointegral'>
         <text>积分:</text>
         <text class='integral-num'>{{integral}}p</text>
       </view>
       <text>{{userInfo.userName}}</text>
-      <view class='coupon'>
+      <view class='coupon' catchtap='tocoupons'>
         <text>优惠劵:</text>
         <text class='coupon-num'>{{couponNum}}个</text>
       </view>

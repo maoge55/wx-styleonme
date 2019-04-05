@@ -316,6 +316,20 @@ Component({
       wx.navigateTo({
         url: '../../pages/compleInfo/compleInfo',
       })
+    },
+    tointegral:function(){
+      wx.showLoading();
+      wx.navigateTo({
+        url: '../../pages/integral/integral',
+        success:(e)=>wx.hideLoading()
+      })
+    },
+    tocoupons:function(){
+      wx.showLoading()
+      wx.navigateTo({
+        url: '../../pages/coupons/coupons',
+        success:(e)=>wx.hideLoading()
+      })
     }
   }
 })

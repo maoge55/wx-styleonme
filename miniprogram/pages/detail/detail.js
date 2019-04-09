@@ -386,5 +386,14 @@ Page({
     }
     console.log(good)
     return good;
+  },
+  errimg:function(e){
+    let i=e.currentTarget.dataset.index;
+    let pic=this.data.pro.pic;
+    let img=pic.splice(i,1);
+    console.log('删除了',img)
+    this.setData({
+      ['pro.pic']:pic
+    })
   }
 })

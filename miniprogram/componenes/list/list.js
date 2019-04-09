@@ -28,7 +28,6 @@ Component({
   data: {
     picnum: 0,
     ldata:[],
-    errimg:'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/errimg.jpg',
     err:false,
     loveImg: ['../../images/icons/wishlist_button.png', '../../images/icons/add_wishlist.png']
   },
@@ -48,13 +47,23 @@ Component({
     },
 
     imgerr:function(e){
-      var errimg=this.data.errimg;
-      var err=[];
-      err.push(errimg);
-      err.push(errimg)
-      var i=e.currentTarget.dataset.index;
-      var key='listdata['+i+'].pic';
-      this.setData({[key]:err})
+      let errimg = 'cloud://envtest-bb8d5d.656e-envtest-bb8d5d/images/errimg.jpg'
+      let i=e.currentTarget.dataset.index;
+      let pic=this.data.listdata[i].pic;
+      let pid=this.data.listdata[i].PID;
+      let delimg=pic.shift();
+      if(pic.length==0){pic.push(errimg);}
+      let key='listdata['+i+'].pic';
+      this.setData({[key]:pic})
+      // //检查云储存是否有图片资源如果没有则在数据库删除该图片地址
+      // wx.cloud.downloadFile({
+      //   fileID:delimg
+      // }).catch(err=>{
+      //   wx.cloud.callFunction({
+      //     name:'upgif',
+      //     data:{pid:pid}
+      //   }).then(res=>console.log(res))
+      // })
     },
 
     todetail:function(e){

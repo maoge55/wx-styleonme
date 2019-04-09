@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/compleInfo/compleInfo",
+    "pages/administrators/administrators",
     "pages/coupons/coupons",
     "pages/integral/integral",
     "pages/order/order",
@@ -9,7 +11,6 @@
     "pages/buy/buy",
     "pages/detail/detail",
     "pages/my/my",
-    "pages/compleInfo/compleInfo",
     "pages/lists/lists",
     "pages/index/index",
     "pages/teleBind/teleBind",

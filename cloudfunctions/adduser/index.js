@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
     let pro2= await db.collection('userInfo').where({
       openid: wxContext.OPENID
     }).update({data:{userName:userName,userImg:userImg,userLocation:userLocation}})
-    return '更新了'+pro2.stats.updated+'个用户信息'
+    return {mes:'更新用户信息',openid:wxContext.OPENID}
   }
   else{
     //新增成员
@@ -51,6 +51,6 @@ exports.main = async (event, context) => {
         effective:mydate+'~'+mydate2
       }
     })
-    return 1111
+    return {mes:'新用户',openid:wxContext.OPENID}
   }
 }

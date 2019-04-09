@@ -1,35 +1,35 @@
-
+<wxs src="../../utils/filters.wxs" module="filters" />
 <view class='product_list'>
   <view class='ul'>
     <block wx:for='{{listdata}}' wx:key='d'>
       <view class="pic_list {{(grid=='3')?'grid3':''}}" catchtap='todetail'
       data-pid='{{item.PID}}'>
         <view>
-          <image src="{{item.pic[picnum]}}" class='pro-imgs' mode='widthFix'
+          <image src="{{(!!item.imggif)?item.imggif:item.pic[0]}}" class='pro-imgs' mode='widthFix'
           binderror='imgerr' data-index='{{index}}'></image>
         </view>
         <view class='blk'></view>
-        <view class="madeby_icon">
+        <!-- <view class="madeby_icon">
           <image src='../../images/icons/madeby_1806.png'>
           </image>
-        </view>
+        </view> -->
         <view class='item_box_textarea'>
           <view class='info-ul'>
             <view class='item-title'>
               <text>{{item.title}}</text>
             </view>
-            <view class='item-option-colors'>
+            <!-- <view class='item-option-colors'>
               <block wx:for='{{item.colors}}' wx:for-index='i' wx:for-item='k' wx:key='e'>
                 <view style="background:color{{k}}" class="li-color {{(i==0)?'li-first':''}}">
 
                 </view>
               </block>
-            </view>
+            </view> -->
             <view class='item-price'>
               <text></text>
               <text></text>
-              <view class='blk' style='height:10rpx;line-height:18rpx'></view>
-              <text style='line-height:28rpx'>{{item.price}}</text>
+              <view class='blk' style='height:10rpx;'></view>
+              <text style='line-height:28rpx;font-weight:bold;color:#e64340;padding:5rpx;'>¥{{filters.toCNY(item.price)}}</text>
             </view>
             <view class='item-icon'>
               <image src='../../images/icons/new_item_discount.gif' wx:if='{{item.tags.newfive}}'></image>

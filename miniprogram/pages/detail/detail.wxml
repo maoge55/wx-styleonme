@@ -1,3 +1,4 @@
+<wxs src="../../utils/filters.wxs" module="filters" />
 <mother bindtobottom='loadmore' i-class='qucik-menu' j-class='bottblk' id='motherd'>
   <view slot='placehoder2'>
     <!-- 产品名 -->
@@ -22,7 +23,7 @@
         <view class='img-list'>
           <view style='width:100%'>
             <block wx:for='{{pro.pic}}' wx:key=''>
-              <image src='{{item}}' mode='widthFix' catchtap='chooseImg' data-index='{{index}}'></image>
+              <image src='{{item}}' mode='widthFix' catchtap='chooseImg' data-index='{{index}}' binderror='errimg'></image>
             </block>
           </view>
         </view>
@@ -35,7 +36,7 @@
           </view>
 
           <view class='price'>
-            <text class='price-num-color'>{{pro.price}}</text>
+            <text class='price-num-color'>¥{{filters.toCNY(pro.price)}}</text>
           </view>
           <view class='point'>{{price.point}}</view>
         </view>

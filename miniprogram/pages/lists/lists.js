@@ -47,7 +47,6 @@ Page({
       }
     }).then(res=>{
       let bestpro=res.result.mydata;
-      util.listCl(bestpro);
       this.setData({bestpro:bestpro})
     })
   },
@@ -72,7 +71,6 @@ Page({
         this.setData({flag:false,loadover:true})
         return;
       }
-      util.listCl(newdata)
       this.setData({
         classpro:this.data.classpro.concat(newdata),
         len:len+1,

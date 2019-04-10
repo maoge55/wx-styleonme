@@ -71,14 +71,13 @@ Page({
           return;
         }
         console.log('获取长度', len)
-        util.listCl(likedata);
         console.log('当前页产品', likedata);
         for (let i = 0; i < likedata.length; i++) {
           likedata[i].progg = {
             color: '',
             buynum: 1,
             size: ''
-          }
+          }//每项都需要给个新对象progg
           this.getcolors(likedata[i])
         }
         this.setData({
@@ -99,17 +98,6 @@ Page({
       let ys = {};
       ys.id = i.toString();
       ys.text = color[i];
-      for (var j = 0; j < color[i].length; j++) {
-        if (color[i][j] == '&') {
-          var k = j;
-          var str1 = color[i].substring(0, k);
-          var str3 = '色';
-          var str2 = color[i].substr(k + 2, 5);
-          str2 = util.hexToText(str2);
-          ys.text = str1 + str2 + str3;
-          break;
-        }
-      }
       colors.push(ys);
     }
     data.colors = colors

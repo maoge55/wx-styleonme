@@ -46,7 +46,6 @@ Page({
     pro.limit(6).skip(len*6).get().then(res=>{
       if(res.data.length==0){this.setData({flag1:false});return;}
       var data=res.data.slice(0)
-      util.listCl(data);
       wx.cloud.callFunction({
         name: 'getlike',
         data: {
@@ -61,7 +60,6 @@ Page({
 
     pro.limit(9).skip(100).get().then(res=>{
       let data=res.data;
-      util.listCl(data);
       wx.cloud.callFunction({
         name: 'getlike',
         data: {
@@ -120,7 +118,6 @@ Page({
       }
     }).then(res=>{
       let arrdata=res.result.mydata;
-      util.listCl(arrdata);
       this.setData({tppro:arrdata})
     })
 

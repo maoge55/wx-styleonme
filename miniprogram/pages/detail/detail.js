@@ -85,17 +85,6 @@ Page({
       let ys = {};
       ys.id = i.toString();
       ys.text = color[i];
-      for (var j = 0; j < color[i].length; j++) {
-        if (color[i][j] == '&') {
-          var k = j;
-          var str1 = color[i].substring(0, k);
-          var str3 = '色';
-          var str2 = color[i].substr(k + 2, 5);
-          str2 = util.hexToText(str2);
-          ys.text = str1 + str2 + str3;
-          break;
-        }
-      }
       colors.push(ys);
     }
     this.setData({
@@ -232,7 +221,6 @@ Page({
       PID: pid
     }).get().then(res => {
       let data = res.data;
-      util.listCl(data);
       this.setData({
         pro: data[0]
       })

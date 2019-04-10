@@ -38,8 +38,8 @@
                   </stepper>
                 </view>
                 <view class='good-price'>
-                  <text style='font-size: 10px;color: #999;'>销售价格 ¥{{filters.toFix(item.price.priceCNY*item.buynum)}}\n</text>
-                  <text style='font-size:14px;font-weight:bold'>¥ {{filters.toFix(item.price.priceCNY*item.buynum)}}</text>
+                  <text style='font-size: 10px;color: #999;'>销售价格 ¥{{filters.toFix(item.price*item.buynum)}}\n</text>
+                  <text style='font-size:14px;font-weight:bold'>¥ {{filters.toFix(item.price*item.buynum)}}</text>
                 </view>
                 <view class='good-delete'>
                   <image src='../../images/bg_delete.png' mode='widthFix' catchtap='onedel' data-index='{{index}}'></image>

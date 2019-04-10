@@ -363,22 +363,10 @@ Page({
     }
     wx.showLoading();
     buynum = parseInt(buynum)
-    var price = pro.price;
-    var priceCNY = parseFloat(price)
-    for (let i = 0; i < price.length; i++) {
-      if (price[i] == '$') {
-        var priceUSD = parseFloat(price.substr(i + 1));
-        break;
-      }
-    }
-    console.log(priceCNY, priceUSD)
     var good = {
       pid: pro.PID,
       title: pro.title,
-      price: {
-        priceCNY: priceCNY,
-        priceUSD: priceUSD
-      },
+      price: pro.price,
       pic: pro.pic[0],
       buynum: buynum,
       color: color,

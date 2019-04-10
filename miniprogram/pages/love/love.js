@@ -302,14 +302,7 @@ Page({
       }
       wx.showLoading()
       var price = goods[j].price;
-      var priceCNY = parseFloat(price)
       //价格格式化
-      for (let k = 0; k < price.length; k++) {
-        if (price[k] == '$') {
-          var priceUSD = parseFloat(price.substr(k + 1));
-          break;
-        }
-      }
       var {
         color,
         buynum,
@@ -318,10 +311,7 @@ Page({
       good = {
         pid: goods[j].PID,
         title: goods[j].title,
-        price: {
-          priceCNY: priceCNY,
-          priceUSD: priceUSD
-        },
+        price: price,
         pic: goods[j].pic[0],
         buynum: buynum,
         color: color,

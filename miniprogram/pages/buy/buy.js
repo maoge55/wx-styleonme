@@ -99,7 +99,7 @@ Page({
     let buy=this.data.buy;
     let totalprice=0
     for(let i=0;i<buy.length;i++){
-      totalprice+=buy[i].price.priceCNY*buy[i].buynum
+      totalprice+=buy[i].price*buy[i].buynum
     }
     this.setData({totalprice:totalprice})
   },

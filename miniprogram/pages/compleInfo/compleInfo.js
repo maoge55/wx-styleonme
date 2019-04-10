@@ -25,8 +25,8 @@ Page({
     var { userName, userImg, userLocation,bothday}=this.data;
     var {name,wxnumber,telephone,Received}=value
     let data = { userName, userImg, name, wxnumber, telephone, userLocation, Received, bothday }
-    wx.setStorageSync('userInfo', data)
-    console.log('缓存',wx.getStorageSync('userInfo'))
+    wx.setStorageSync('userInfo1', data)
+    console.log('缓存',wx.getStorageSync('userInfo1'))
   },
   saveinfo:function(e){
     let value=e.detail.value;
@@ -62,7 +62,7 @@ Page({
         userLocation: app.globalData.userInfo.userLocation
       })
     }
-    var userInfo1 = wx.getStorageSync('userInfo') ||{}
+    var userInfo1 = wx.getStorageSync('userInfo1') ||{}
     if (userInfo1.userName) {
       console.log('用户缓存加载',userInfo1)
       var {userName, userImg, name, wxnumber, telephone, userLocation, Received, bothday } = userInfo1;
@@ -119,9 +119,9 @@ Page({
     wx.chooseReceived({
       success:e=>{
         let Received=e.provinceName+e.cityName+e.countyName+e.detailInfo;
-        let userInfo=wx.getStorageSync('userInfo')||{}
+        let userInfo=wx.getStorageSync('userInfo1')||{}
         userInfo.Received=Received;
-        wx.setStorageSync('userInfo', userInfo)
+        wx.setStorageSync('userInfo1', userInfo)
       }
     })
   },
@@ -132,8 +132,10 @@ Page({
         wx.showLoading({
           title: '正在保存地址',
         })
-        let address=e.provinceName+e.cityName+e.countyName+e.detailInfo
-        console.log(address)
+        let address=e.provinceName+e.cityName+e.countyName+e.detailInfo;
+        let userInfo = wx.getStorageSync('userInfo1') || {};
+        userInfo.Received = address;
+        wx.setStorageSync('userInfo1', userInfo)
         this.setData({Received:address})
       },
       complete:(e)=>{

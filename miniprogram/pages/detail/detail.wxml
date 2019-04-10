@@ -36,7 +36,7 @@
           </view>
 
           <view class='price'>
-            <text class='price-num-color'>¥{{filters.toCNY(pro.price)}}</text>
+            <text class='price-num-color'>¥{{filters.toFix(pro.price)}}</text>
           </view>
           <view class='point'>{{price.point}}</view>
         </view>

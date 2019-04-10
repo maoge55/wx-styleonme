@@ -29,7 +29,7 @@
               <text></text>
               <text></text>
               <view class='blk' style='height:10rpx;'></view>
-              <text style='line-height:28rpx;font-weight:bold;color:#e64340;padding:5rpx;'>¥{{filters.toCNY(item.price)}}</text>
+              <text style='line-height:28rpx;font-weight:bold;color:#e64340;padding:5rpx;'>¥{{filters.toFix(item.price)}}</text>
             </view>
             <view class='item-icon'>
               <image src='../../images/icons/new_item_discount.gif' wx:if='{{item.tags.newfive}}'></image>

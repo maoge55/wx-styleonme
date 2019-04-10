@@ -23,7 +23,7 @@
               <view class='good-detail'>
                 <view style='text-align: left;display: block;padding:30rpx 20rpx 0 40rpx;'>
                   <view style='color:#333;font-weight:400;text-align:center;padding-bottom:20rpx;'>{{item.title}}</view>
-                  <view style='color:#936d37;font-weight:bold;text-align:center'>{{item.price}}</view>
+                  <view style='color:#936d37;font-weight:bold;text-align:center'>¥{{item.price}}</view>
                   <view class='tr-select'>
                     <select width='400rpx' nowText='请选择' propArray='{{item.colors}}' catchchoose='select' data-ss='0' data-index='{{index}}'>
                     </select>

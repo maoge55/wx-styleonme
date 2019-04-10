@@ -22,11 +22,11 @@
             <text>{{item.color}}/{{item.size}}</text>
           </view>
           <view class='cot-item '>
-            <text>¥\n{{filters.toFix(item.price.priceCNY)}}</text>
+            <text>¥\n{{filters.toFix(item.price)}}</text>
           </view>
           <view class='cot-item '>{{item.buynum}}个</view>
           <view class='cot-item  item-last'>
-            <text>¥\n{{filters.toFix(item.buynum*item.price.priceCNY)}}</text>
+            <text>¥\n{{filters.toFix(item.buynum*item.price)}}</text>
           </view>
         </view>
       </block>

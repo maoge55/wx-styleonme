@@ -5,7 +5,7 @@
       <view class="pic_list {{(grid=='3')?'grid3':''}}" catchtap='todetail'
       data-pid='{{item.PID}}'>
         <view>
-          <image src="{{(!!item.imggif)?item.imggif:item.pic[0]}}" class='pro-imgs' mode='widthFix'
+          <image src="{{(!!item.mainImg)?item.mainImg:item.pic[0]}}" class='pro-imgs' mode='widthFix'
           binderror='imgerr' data-index='{{index}}'></image>
         </view>
         <view class='blk'></view>

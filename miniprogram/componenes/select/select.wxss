@@ -24,13 +24,13 @@
     font-size: 12px;
 }
 .com-sList{
-    background: white;
+    background: #f6f6f6;
     position: absolute;
     border: 1px solid #e2e2e2;
     border-top: none;
     box-sizing: border-box;
     z-index: 3;
-    max-height: 120px;
+    max-height: 500rpx;
     overflow: auto;
 }
 .com-sItem{

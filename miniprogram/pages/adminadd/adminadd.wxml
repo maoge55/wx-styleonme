@@ -1,0 +1,48 @@
+<!--pages/set/set.wxml-->
+<view class='container'>
+  <view class='title'>商品添加</view>
+  <form bindsubmit='comfirm'>
+    <view class='input-container'>
+      <label>PID：</label>
+      <input name="pid" type='number' maxlength='5'></input>
+    </view>
+    <view class='input-container'>
+      <label>商品名：</label>
+      <input name="pname"></input>
+    </view>
+    <view class='input-container'>
+      <label>价格：</label>
+      <input name="price"></input>
+    </view>
+    <view class='input-container'>
+      <label>颜色：</label>
+      <input placeholder='不同颜色用|隔开' name="colors"></input>
+    </view>
+    <view class='input-container'>
+      <label>分类：</label>
+      <picker bindchange="navChange" range="{{nav}}" range-key='text' name='cid'>
+        <view class="picker">
+          {{cssname}}
+        </view>
+      </picker>
+    </view>
+    <view class='input-container'>
+      <label>主图：</label>
+      <input placeholder='选择图片' name="mainimg" value='{{mainimg}}' disabled bindtap='getmainimg' maxlength='-1'></input>
+    </view>
+    <view class='input-container'>
+      <label>轮播图：</label>
+      <input placeholder='选择1~5张图片' name="listimg" value='{{listimg}}' disabled bindtap='getlistimg' maxlength='-1'></input>
+    </view>
+    <view class='input-container'>
+      <label>详情图：</label>
+      <input placeholder='选择10~40图片' name="detimg" value='{{detimg}}' disabled bindtap='getdetimg' maxlength='-1'></input>
+    </view>
+    <view class='comfirm'>
+      <button form-type='submit'>保存</button>
+    </view>
+  </form>
+
+
+
+</view>

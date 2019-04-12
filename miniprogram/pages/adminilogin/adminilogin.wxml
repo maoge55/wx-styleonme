@@ -1,0 +1,20 @@
+<view class='container'>
+  <view class='header'>
+    <text>管理员登陆</text>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class='section'>
+      <text>管理员账户：</text>
+      <input type='text' placeholder='请输入管理员账户' name="adminName" value='maoge55' />
+    </view>
+    <view class='section'>
+      <text>密码:</text>
+      <input password='true' placeholder='请输入密码' name="pwd" value='' />
+    </view>
+    <view class='button'>
+      <button type='primary' form-type='submit'>登录</button>
+      <view style='height:15rpx;'></view>
+      <button bindtap='tohome' type='warn'>返回用户页</button>
+    </view>
+  </form>
+</view>

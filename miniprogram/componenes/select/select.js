@@ -28,6 +28,11 @@ Component({
       type:String,
       value:'250rpx'
     },
+
+    height:{
+      type:String,
+      value:'350rpx'
+    },
     nowText:{
       type:String,
       value:''

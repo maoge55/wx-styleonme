@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/adminadd/adminadd",
+    "pages/adminlist/adminlist",
     "pages/home/home",
+    "pages/adminilogin/adminilogin",
     "pages/compleInfo/compleInfo",
-    "pages/administrators/administrators",
     "pages/coupons/coupons",
     "pages/integral/integral",
     "pages/order/order",

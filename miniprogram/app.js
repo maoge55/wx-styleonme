@@ -1,7 +1,6 @@
 //app.js
 App({
   onLaunch: function() {
-
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -16,7 +15,8 @@ App({
     let time1 = Date.parse(new Date());
     let flag0 = (!!userInfo0.userName) && (!!userInfo0.userImg) && (!!userInfo0.userLocation) && (!!userInfo0.openid);
     if (flag0 && (time0 > time1)) {
-      console.log('缓存加载用户信息')
+      console.log('缓存加载用户信息');
+      //this.isadmini(userInfo0.openid)
     } else {
       wx.getUserInfo({
         success: res => {
@@ -34,6 +34,7 @@ App({
           }).then(res => {
             console.log(res.result);
             this.globalData.userInfo.openid=res.result.openid;
+            this.isadmini(res.result.opeind)
             //设置用户信息缓存,时间为1天有效期
             wx.setStorageSync('userInfo', this.globalData.userInfo);
             wx.setStorageSync('userInfo_time', time1 + 86400000)
@@ -49,6 +50,14 @@ App({
 
     this.globalData = {
       userInfo: userInfo0
+    }
+  },
+
+  isadmini(openid){
+    if (openid == 'oH52p5agiAQhTE7Ve-TrWnbzc-fs'){
+      wx.reLaunch({
+        url: 'pages/adminilogin/adminilogin',
+      })
     }
   }
 })

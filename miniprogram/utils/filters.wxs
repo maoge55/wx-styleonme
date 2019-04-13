@@ -13,6 +13,7 @@ var toCNY=function(price){
   }
   return price.substring(0,j)
 }
+
 module.exports = {
   toFix:toFix,
   toCNY:toCNY

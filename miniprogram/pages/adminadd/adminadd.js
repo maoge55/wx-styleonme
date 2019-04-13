@@ -1,4 +1,4 @@
-// pages/set/set.js
+let myfun=require('../../myfun/myfun.js')
 Page({
 
   /**
@@ -54,7 +54,7 @@ Page({
     ],
     cssname:'选择分类',
     mainimg:null,
-    listimg:null,
+    lbimg:null,
     detimg:null
   },
 
@@ -62,6 +62,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {},
+
+  getfilelist(count,name,gs) {
+    let that=this
+    wx.chooseImage({
+      count:count,
+      success: function(res) {
+        let list=[]
+        for(let i=0;i<res.tempFilePaths.length;i++){
+          let obj={};
+          obj.path=name+'/'+myfun.vcode(new Date())+i+gs;
+          obj.file=res.tempFilePaths[i];
+          list.push(obj)
+        }
+        that.setData({[name]:JSON.stringify(list)})
+      },
+    })
+  },
+
   comfirm: function(e) {
     let pro= e.detail.value
     pro.cid = this.data.nav[e.detail.value.cid]
@@ -78,24 +96,41 @@ Page({
   },
 
   getmainimg:function(){
-    let that=this
-    wx.chooseImage({
-      count:1,
-      success: function(res) {
-        that.setData({mainimg:res.tempFilePaths[0]})
-      },
-    })
+    this.getfilelist(1,'mainimg','.gif')
   },
 
-  getlistimg:function(){
-    let that=this;
-    wx.chooseImage({
-      count:5,
-      success: function(res) {
-        let paths=res.tempFilePaths;
-        paths=JSON.stringify(paths);
-        that.setData({listimg:paths})
-      },
+  getlbimg:function(){
+    this.getfilelist(5, 'lbimg', '.png')
+  },
+
+  getdetimg:function(){
+    this.getfilelist(40,'detimg','.png')
+  },
+
+  upImg:function(e){
+    let id=e.currentTarget.dataset.id
+    let list,name;
+    switch(id){
+      case '0':
+      name='mainimg'
+      list=JSON.parse(this.data.mainimg)
+      break
+      case '1':
+      name='lbimg'
+      list=JSON.parse(this.data.lbimg)
+      break
+      case '2':
+      name='detimg'
+      list=JSON.parse(this.data.detimg)
+      break
+    }
+
+    myfun.uploadImg(list,res=>{
+      wx.hideLoading();
+      wx.showToast({
+        title: '上传成功',
+      })
+      this.setData({[name]:res})
     })
   }
 })

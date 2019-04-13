@@ -10,7 +10,7 @@
 	},
 	"appid": "wx1e04bc647c82887f",
 	"projectname": "styleonme",
-	"libVersion": "2.6.2",
+	"libVersion": "2.6.5",
 	"condition": {
 		"search": {
 			"current": -1,

@@ -29,17 +29,20 @@
     <view class='input-container'>
       <label>主图：</label>
       <input placeholder='选择图片' name="mainimg" value='{{mainimg}}' disabled bindtap='getmainimg' maxlength='-1'></input>
+      <button size='mini' type='warn' data-id='0' bindtap='upImg' disabled="{{!mainimg||mainimg[0][0]=='c'}}">上传图片</button>
     </view>
     <view class='input-container'>
       <label>轮播图：</label>
-      <input placeholder='选择1~5张图片' name="listimg" value='{{listimg}}' disabled bindtap='getlistimg' maxlength='-1'></input>
+      <input placeholder='选择1~5张图片' name="lbimg" value='{{lbimg}}' disabled bindtap='getlbimg' maxlength='-1' ></input>
+      <button size='mini' type='warn' data-id='1' bindtap='upImg' disabled="{{!lbimg||lbimg[0][0]=='c'}}">上传图片</button>
     </view>
     <view class='input-container'>
       <label>详情图：</label>
       <input placeholder='选择10~40图片' name="detimg" value='{{detimg}}' disabled bindtap='getdetimg' maxlength='-1'></input>
+      <button size='mini' type='warn' data-id='2' bindtap='upImg' disabled="{{!detimg||detimg[0][0]=='c'}}">上传图片</button>
     </view>
     <view class='comfirm'>
-      <button form-type='submit'>保存</button>
+      <button form-type='submit'>上传商品</button>
     </view>
   </form>
 

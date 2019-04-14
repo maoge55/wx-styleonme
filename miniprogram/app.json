@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/adminadd/adminadd",
-    "pages/adminlist/adminlist",
     "pages/home/home",
+    "pages/adminlist/adminlist",
+    "pages/adminupdate/adminupdate",
+    "pages/adminadd/adminadd",
     "pages/adminilogin/adminilogin",
     "pages/compleInfo/compleInfo",
     "pages/coupons/coupons",

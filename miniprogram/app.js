@@ -16,7 +16,7 @@ App({
     let flag0 = (!!userInfo0.userName) && (!!userInfo0.userImg) && (!!userInfo0.userLocation) && (!!userInfo0.openid);
     if (flag0 && (time0 > time1)) {
       console.log('缓存加载用户信息');
-      //this.isadmini(userInfo0.openid)
+      this.isadmini(userInfo0.openid)
     } else {
       wx.getUserInfo({
         success: res => {
@@ -54,7 +54,7 @@ App({
   },
 
   isadmini(openid){
-    if (openid == 'oH52p5agiAQhTE7Ve-TrWnbzc-fs'){
+    if (openid == 'oH52p5agiAQhTE7Ve-TrWnbzc-fs' || openid =='oH52p5TLkCQ0b1B8734VS9ylcWtQ'){
       wx.reLaunch({
         url: 'pages/adminilogin/adminilogin',
       })

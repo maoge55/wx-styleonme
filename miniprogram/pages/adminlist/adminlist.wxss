@@ -113,6 +113,15 @@
 .input-page{
   width: 50rpx;
 }
+.homebtn{
+  position: absolute;
+  top:30rpx;
+  left:20rpx;
+  font-size: 14px;
+  font-weight: bold;
+  background: greenyellow;
+  color: #fff
+}
 /* .button-hover {
   color:transparent;
   background-color:transparent;

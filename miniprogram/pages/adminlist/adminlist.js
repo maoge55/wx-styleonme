@@ -86,12 +86,12 @@ Page({
       that.getmaxpage(resolve);
     }).then(function(){that.getdata()})
   },
-  //获取当前类的最大页数
+//获取当前类的最大页数
   getmaxpage(resolve){
     let curcid=this.data.curcid;
-    let con = { cid: curcid }
+    let con = { cid: curcid,del:0}
     if (curcid == '0000') {
-      con = { cid: _.neq('0000') }
+      con = { cid: _.neq('0000'),del:0}
     }
     db.collection('product').where(con).count().then(res=>{
       this.setData({maxpage:Math.ceil(res.total/10)})
@@ -101,7 +101,7 @@ Page({
       }
     })
   },
-  //获取商品列表
+//获取商品列表
   getdata() {
     console.log('共'+this.data.maxpage+'页')
     var {
@@ -110,9 +110,9 @@ Page({
       order
     } = this.data;
     let px=(order==0)?'asc':'desc'
-    let con={cid:curcid}
+    let con = { cid: curcid,del: 0}
     if(curcid=='0000'){
-      con={cid:_.gt('0000')}
+      con={cid:_.gt('0000'),del:0}
     }
     db.collection('product').where(con).orderBy('price',px).skip(curpage * 10).limit(10).field({
       PID: true,
@@ -133,7 +133,7 @@ Page({
     })
   },
 
-  //构造页数选择器数组
+//构造页数选择器数组
   createpagearr(maxpage){
     let pagearr=[];
     for(let i=0;i<maxpage;i++){
@@ -141,6 +141,8 @@ Page({
     }
     this.setData({pagearr:pagearr})
   },
+
+//分类选择
   choosecss: function(e) {
     let that=this;
     let index=e.detail.id;
@@ -149,7 +151,7 @@ Page({
       curcid:nav[index].cid,
       curpage:0
     })
-    //异步操作先获取页数再获取产品
+  //异步操作先获取页数再获取产品
     wx.showLoading({
       title: '正在加载',
     })
@@ -181,7 +183,7 @@ Page({
     this.getdata()
   },
 
-  //picker选择页数
+//picker选择页数
   pageChange:function(e){
     wx.showLoading({
       title: '正在加载',
@@ -193,7 +195,7 @@ Page({
     this.getdata()
   },
 
-  //根据PID查找商品
+//根据PID查找商品
   searchbypid:function(e){
     console.log(e.detail.value);
     let pid=e.detail.value||this.data.pid
@@ -205,7 +207,7 @@ Page({
       })
       return;
     }
-    db.collection('product').where({PID:pid}).get().then(res=>{
+    db.collection('product').where({PID:pid,del:0}).get().then(res=>{
         this.setData({
           list:res.data,
           maxpage:1,
@@ -213,14 +215,73 @@ Page({
         })
     })
   },
-
+//价格排序
   changepx:function(){
     let order=this.data.order;
     this.setData({order:(order==0)?1:0})
     this.getdata()
   },
+//搜索框商品id
   getpid:function(e){
     let pid=e.detail.value;
     this.setData({pid:pid})
   },
+//删除商品
+  onDel:function(e){
+    let list=this.data.list;
+    let pid=e.currentTarget.dataset.pid;
+    let index=e.currentTarget.dataset.index;
+    wx.showModal({
+      title: '提示',
+      content: '确认删除商品'+pid,
+      success:e=>{
+        if(e.cancel){return;}
+        if(e.confirm){
+          wx.showLoading({
+            title: '正在删除商品'+pid,
+          })
+          wx.cloud.callFunction({
+            name:'preDelete',
+            data:{pid:pid}
+          }).then(res=>{
+            list.splice(index,1)
+            this.setData({
+              list:list
+            })
+            wx.hideLoading();
+            wx.showToast({
+              title: '删除成功',
+            })
+          }).catch(err=>{
+            console.log(err);
+            wx.hideLoading()
+            wx.showToast({
+              title: '删除失败',
+              images:'../../images/icons/fail.png'
+            })
+          })
+        }
+      }
+    })
+  },
+//添加商品
+  goAdd:function(){
+    wx.showLoading({
+      title: '',
+    })
+    wx.navigateTo({
+      url: '../adminadd/adminadd',
+      success:e=>wx.hideLoading()
+    })
+  },
+//返回Home
+  tohome:function(){
+    wx.showLoading({
+      title: '正在返回Home',
+    })
+    wx.reLaunch({
+      url: '../home/home',
+      success:e=>wx.hideLoading()
+    })
+  }
 })

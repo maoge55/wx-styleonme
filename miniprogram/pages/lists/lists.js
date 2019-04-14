@@ -16,34 +16,16 @@ Page({
     flag:false,
     loadover:false
   },
-  pxfs(){
-    var arr=this.data.classpro;
-    var ordid=this.data.ordid;
-    switch(ordid){
-      case 0:
-      arr.sort(util.comparedesc('time'))
-      break;
-      case 1:
-      arr.sort(util.comparedesc('charm'))
-      break;
-      case 2:
-      arr.sort(util.comparepriceasc('price'))
-      break;
-      case 3:
-      arr.sort(util.comparepricedesc('price'))
-      break;
-    }
-    this.setData({classpro:arr})
-    console.log(this.data.classpro)
-  },
-  getlistdata(cid){
+  getlistdata(){
     //获取best商品列表
+    let cid=this.data.cid
     wx.cloud.callFunction({
       name:'getprolist',
       data:{
         len:0,
         limit:6,
-        cid:cid
+        cid:cid,
+        ordid:1
       }
     }).then(res=>{
       let bestpro=res.result.mydata;
@@ -51,17 +33,19 @@ Page({
     })
   },
 
-  getclasspro(cid){
+  getclasspro(){
     //获取分类商品的列表
-    var { len, cid} = this.data;
+    var { len, cid,ordid} = this.data;
     wx.cloud.callFunction({
       name: 'getprolist',
       data: {
+        ordid:ordid,
         len: len,
         cid: cid,
         limit: 20
       }
     }).then(res => {
+      wx.hideLoading()
       var newdata = res.result.mydata;
       if(newdata.length==0){
         wx.showToast({
@@ -71,23 +55,30 @@ Page({
         this.setData({flag:false,loadover:true})
         return;
       }
+      console.log(newdata)
       this.setData({
         classpro:this.data.classpro.concat(newdata),
         len:len+1,
         flag:false
       })
-      this.pxfs()
       var arr=this.data.classpro;
     })
   },
 
   getordmeth:function(e){
+    wx.showLoading({
+      title: '',
+    })
     var id=e.detail.id;
     var ordid=this.data.ordid;
     if(id==ordid){return;}
-    this.setData({ordid:id})
-    console.log(id)
-    this.pxfs();
+    this.setData({
+        ordid:id,
+        len:0,
+        classpro:[],
+        loadover:false
+    });
+    this.getclasspro()
   },
 
   getgrid:function(e){
@@ -98,10 +89,8 @@ Page({
     if(this.data.len==0){return;}//避免刚载入页面就触底刷新
     if(this.data.flag){return;}//避免重复触底刷新
     if(this.data.loadover){return;}//加载全部数据完也不触发
-    console.log(e)
     this.setData({flag:true})
     this.getclasspro();
-
   },
   backlast:function(e){
     console.log(e)
@@ -137,41 +126,8 @@ Page({
       classname:item.classname
     })
     console.log(item)
-    this.getlistdata(this.data.cid);
-    this.getclasspro(this.data.cid)
+    this.getlistdata();
+    this.getclasspro()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    wx.hideLoading();
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

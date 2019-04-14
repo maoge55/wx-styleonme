@@ -55,7 +55,8 @@ Page({
     cssname:'选择分类',
     mainimg:null,
     lbimg:null,
-    detimg:null
+    detimg:null,
+    tags:['自制商品','新品','当天发送']
   },
 
   /**
@@ -82,12 +83,40 @@ Page({
 
   comfirm: function(e) {
     let pro= e.detail.value
-    pro.cid = this.data.nav[e.detail.value.cid]
+    for(let item in pro){
+      if(!pro[item]){
+        wx.showModal({
+          title: '提示',
+          content: '请输入'+item,
+          showCancel:false
+        })
+        return;
+      }
+    }
+    wx.showLoading({
+      title: '正在上传新商品',
+    })
+    pro.cid = this.data.nav[e.detail.value.cid].cid
+    pro.lbimg=this.data.lbimg;
+    pro.detimg=this.data.detimg;
     console.log(pro)
     wx.cloud.callFunction({
       name:'addpro',
       data:{pro:pro}
-    }).then(res=>{console.log(res.result)}).catch(err=>console.log('上传失败'))
+    }).then(res=>{
+        console.log(res.result);
+        wx.hideLoading();
+        wx.showToast({
+          title: '成功上传新商品',
+        })
+      }).catch(err=>{
+      console.log(err);
+      wx.hideLoading()
+      wx.showToast({
+        title: '上传失败',
+        image:'../../images/icons/fail.png'
+      })
+    })
   },
 
   navChange:function(e){

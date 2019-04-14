@@ -7,13 +7,13 @@ let db=cloud.database();
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   var {cid,limit,len}=event
-
+  let pxs=[{name:'time',fs:'desc'},{name:'charm',fs:'desc'},{name:'price',fs:'asc'},{name:'price',fs:'desc'}]
+  let ordid=parseInt(event.ordid)
   if(cid=='0'){
     return;
   }
-
   let promise1=db.collection('product').where({
-  cid:cid}).limit(limit).skip(limit*len).get()
+  cid:cid,del:0}).orderBy(pxs[ordid].name,pxs[ordid].fs).limit(limit).skip(limit*len).get()
   let promise2= cloud.callFunction({
     name:'getlike',
     data:{openid:wxContext.OPENID}

@@ -43,7 +43,7 @@ Page({
             title: '登陆成功',
           })
           wx.redirectTo({
-            url: '../administrators/administrators?name='+name+'',
+            url: '../adminlist/adminlist?name='+name+'',
           })
         }
         else{

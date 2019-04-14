@@ -43,7 +43,7 @@ Page({
     let db=wx.cloud.database();
     let pro=db.collection('product');
     let len=this.data.lenth
-    pro.limit(6).skip(len*6).get().then(res=>{
+    pro.where({del:0}).orderBy('charm','desc').limit(6).skip(len*6).get().then(res=>{
       if(res.data.length==0){this.setData({flag1:false});return;}
       var data=res.data.slice(0)
       wx.cloud.callFunction({
@@ -58,7 +58,7 @@ Page({
       })
     })
 
-    pro.limit(9).skip(100).get().then(res=>{
+    pro.where({del:0,cid:'0101'}).orderBy('time','desc').limit(9).get().then(res=>{
       let data=res.data;
       wx.cloud.callFunction({
         name: 'getlike',
@@ -114,7 +114,8 @@ Page({
       data:{
         cid:'0110',
         limit:9,
-        len:0
+        len:0,
+        ordid:1
       }
     }).then(res=>{
       let arrdata=res.result.mydata;

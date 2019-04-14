@@ -41,6 +41,16 @@
       <input placeholder='选择10~40图片' name="detimg" value='{{detimg}}' disabled bindtap='getdetimg' maxlength='-1'></input>
       <button size='mini' type='warn' data-id='2' bindtap='upImg' disabled="{{!detimg||detimg[0][0]=='c'}}">上传图片</button>
     </view>
+
+    <view class='input-container' style='font-size:14px;margin-bottom:150rpx;'>
+      <checkbox-group name='tags'>
+        <view class='bq'>
+          <label wx:for='{{tags}}' wx:key=''>
+            <checkbox value='{{index}}'>{{item}}</checkbox>
+          </label>
+        </view>
+      </checkbox-group>
+    </view>
     <view class='comfirm'>
       <button form-type='submit'>上传商品</button>
     </view>

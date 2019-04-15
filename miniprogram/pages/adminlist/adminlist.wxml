@@ -33,7 +33,7 @@
       <text style='   overflow: hidden;text-overflow: ellipsis;white-space: nowrap;'>{{item.title}}</text>
       <text>{{item.price}}</text>
       <button class='del' data-pid='{{item.PID}}' data-index='{{index}}' bindtap='onDel'>删除</button>
-      <button class='update' data-id='{{item.PID}}' bindtap='onUpdate'>修改</button>
+      <button class='update' data-pid='{{item.PID}}' bindtap='onUpdate'>修改</button>
     </view>
     <view class='line'></view>
   </block>

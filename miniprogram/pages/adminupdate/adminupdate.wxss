@@ -1,1 +1,40 @@
-/* pages/adminupdate/adminupdate.wxss */
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.title{
+  font-size: 20px;
+  color:#000;
+}
+label{width: 20%;text-align: center;font-size: 14px}
+.input-container{
+  width: 750rpx;
+  display: inline-flex;
+  margin-top: 40rpx;
+  align-items: center;
+}
+.bq{justify-content: space-between;width: 750rpx;display: flex;align-items: center}
+.bq label{flex: 1 1 auto;}
+.input-container input{
+  border:1rpx solid #ddd;
+  border-radius: 14rpx;
+  padding: 10rpx;
+  font-size: 14px;
+  width: 360rpx;
+}
+.picker{width: 360rpx;border:solid #dedede 1px; border-radius: 14rpx;font-size: 14px;
+padding: 10rpx;}
+.comfirm {
+    position: fixed;
+    width: 750rpx;
+    height: 120rpx;
+    bottom: 0;
+}
+.comfirm button{
+  margin: 0 10rpx;
+  border-radius: 14rpx 15rpx;
+  background-color: #1aad16;
+  color: #ffffff;
+}

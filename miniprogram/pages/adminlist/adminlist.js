@@ -283,5 +283,18 @@ Page({
       url: '../home/home',
       success:e=>wx.hideLoading()
     })
+  },
+
+//商品修改
+  onUpdate:function(e){
+    let pid=e.currentTarget.dataset.pid;
+    console.log(pid)
+    wx.showLoading({
+      title: '',
+    })
+    wx.navigateTo({
+      url: '../adminupdate/adminupdate?pid='+pid,
+      success:e=>wx.hideLoading()
+    })
   }
 })

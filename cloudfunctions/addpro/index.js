@@ -33,7 +33,7 @@ exports.main = async (event, context) => {
       cid:cid,
       colors:colors,
       commentNum:1,
-      mainimg:mainimg,
+      mainImg:mainimg,
       pic:lbimg,
       price:Number(price),
       tags:bq,

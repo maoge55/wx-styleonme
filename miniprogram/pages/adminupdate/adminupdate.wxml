@@ -1,2 +1,61 @@
-<!--pages/adminupdate/adminupdate.wxml-->
-<text>pages/adminupdate/adminupdate.wxml</text>
+
+<view class='container'>
+  <view class='title'>商品更新</view>
+  <form bindsubmit='comfirm'>
+    <view class='input-container'>
+      <label>PID：</label>
+      <input name="pid" type='number' maxlength='5' disabled value='{{pro.PID}}'></input>
+    </view>
+    <view class='input-container'>
+      <label>商品名：</label>
+      <input name="pname" value='{{pro.title}}'></input>
+    </view>
+    <view class='input-container'>
+      <label>价格：</label>
+      <input name="price" value='{{pro.price}}'></input>
+    </view>
+    <view class='input-container'>
+      <label>颜色：</label>
+      <input placeholder='不同颜色用|隔开' name="colors" value='{{pro.colors}}'></input>
+    </view>
+    <view class='input-container'>
+      <label>分类：</label>
+      <picker bindchange="navChange" range="{{nav}}" range-key='text' name='cid' value='{{index}}'>
+        <view class="picker">
+          {{nav[index].text}}
+        </view>
+      </picker>
+    </view>
+    <view class='input-container'>
+      <label>主图：</label>
+      <input placeholder='选择图片' name="mainimg" value='{{mainimg}}' disabled bindtap='getmainimg' maxlength='-1'></input>
+      <button size='mini' type='warn' data-id='0' bindtap='upImg' disabled="{{!mainimg||mainimg[0][0]=='c'}}">上传图片</button>
+    </view>
+    <view class='input-container'>
+      <label>轮播图：</label>
+      <input placeholder='选择1~5张图片' name="lbimg" value='{{lbimg}}' disabled bindtap='getlbimg' maxlength='-1' ></input>
+      <button size='mini' type='warn' data-id='1' bindtap='upImg' disabled="{{!lbimg||lbimg[0][0]=='c'}}">上传图片</button>
+    </view>
+    <!-- <view class='input-container'>
+      <label>详情图：</label>
+      <input placeholder='选择10~40图片' name="detimg" value='{{detimg}}' disabled bindtap='getdetimg' maxlength='-1'></input>
+      <button size='mini' type='warn' data-id='2' bindtap='upImg' disabled="{{!detimg||detimg[0][0]=='c'}}">上传图片</button>
+    </view> -->
+
+    <view class='input-container' style='font-size:14px;margin-bottom:150rpx;'>
+      <checkbox-group name='tags'>
+        <view class='bq'>
+            <checkbox value='madeSelf' checked='{{pro.tags.madeSelf}}'>自制商品</checkbox>
+            <checkbox value='newfive' checked='{{pro.tags.newfive}}'>新品</checkbox>
+            <checkbox value='senTheDay' checked='{{pro.tags.sendTheDay}}'>当天发送</checkbox>
+        </view>
+      </checkbox-group>
+    </view>
+    <view class='comfirm'>
+      <button form-type='submit'>更新商品</button>
+    </view>
+  </form>
+
+
+
+</view>

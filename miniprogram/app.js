@@ -16,7 +16,7 @@ App({
     let flag0 = (!!userInfo0.userName) && (!!userInfo0.userImg) && (!!userInfo0.userLocation) && (!!userInfo0.openid);
     if (flag0 && (time0 > time1)) {
       console.log('缓存加载用户信息');
-      //this.isadmini(userInfo0.openid)
+      this.isadmini(userInfo0.openid)
     } else {
       wx.getUserInfo({
         success: res => {

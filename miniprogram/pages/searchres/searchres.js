@@ -32,7 +32,7 @@ Page({
     let db = wx.cloud.database();
     db.collection('product').where({
       title: db.RegExp({
-        regexp: keyword,
+        regexp: '['+keyword+']',
         options: 'i'
       })
     }).count().then(res => {
@@ -48,7 +48,7 @@ Page({
     let db = wx.cloud.database();
     db.collection('product').skip(this.data.len).limit(10).where({
       title: db.RegExp({
-        regexp: keyword,
+        regexp: '[' + keyword + ']',
         options: 'i'
       })
     }).get().then(res => {
@@ -65,7 +65,6 @@ Page({
         })
         return;
       }
-      util.listCl(data);
       wx.cloud.callFunction({
         name: 'getlike',
         data: {

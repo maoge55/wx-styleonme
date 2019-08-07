@@ -88,7 +88,7 @@ Page({
   loadmore:function(e){
     if(this.data.len==0){return;}//避免刚载入页面就触底刷新
     if(this.data.flag){return;}//避免重复触底刷新
-    if(this.data.loadover){return;}//加载全部数据完也不触发
+    if(this.data.loadover){return;}//加载全部数据完禁止触发刷新
     this.setData({flag:true})
     this.getclasspro();
   },
@@ -127,7 +127,7 @@ Page({
     })
     console.log(item)
     this.getlistdata();
-    this.getclasspro()
+    this.getclasspro();
   },
 
 })

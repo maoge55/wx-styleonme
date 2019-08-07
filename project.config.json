@@ -6,11 +6,15 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"appid": "wx1e04bc647c82887f",
 	"projectname": "styleonme",
-	"libVersion": "2.6.5",
+	"libVersion": "2.7.1",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

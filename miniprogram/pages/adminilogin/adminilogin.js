@@ -60,5 +60,6 @@ Page({
     wx.reLaunch({
       url: '../home/home',
     })
-  }
+  },
+
 })
